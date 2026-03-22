@@ -47,7 +47,7 @@ public class UserController {
             return "redirect:/login";
         }
 
-        // 自動ログインが終わったら、登録画面ではなく TOP画面（"/"）へ
-        return "redirect:/";
+        // 自動ログインが終わったら、登録画面ではなく mypage画面（"/mypage"）へ
+        return "redirect:/mypage";
     }
 }
