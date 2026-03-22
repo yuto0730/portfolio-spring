@@ -25,7 +25,7 @@ public class UserController {
         // 画面から届いた user 情報を、判定ルール(Service)に渡して保存してもらう
         userService.registerUser(user);
         
-        // 保存が終わったら、TOP画面（今はまだないので、とりあえずルート / ）へリダイレクト
-        return "redirect:/";
+        // 保存が終わったら、TOP画面
+        return "redirect:/signup";
     }
 }
