@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.spring.springbootapplication.entity.User;
 import com.spring.springbootapplication.service.UserService;
 import jakarta.validation.Valid;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.ServletException;
 
 @Controller
 public class UserController {
@@ -15,7 +17,7 @@ public class UserController {
     @Autowired
     private UserService userService; 
 
-    //【GET】登録画面を表示する。チェック結果を保持するために引数に (User user) を追加
+    //【GET】登録画面を表示する。
     @GetMapping("/signup")
     public String showSignupForm(User user) {
         return "signup";
@@ -23,7 +25,7 @@ public class UserController {
 
     //【POST】登録ボタンが押された時の処理
     @PostMapping("/signup")
-    public String register(@Valid User user, BindingResult result) {
+    public String register(@Valid User user, BindingResult result, HttpServletRequest request) {
         
         // もし入力内容にルール違反（エラー）があったら
         // 保存せずに、そのまま登録画面("signup")に戻る
@@ -31,8 +33,21 @@ public class UserController {
             return "signup";
         }
 
-        // エラーがなければ保存してリダイレクト
+        // DBに保存する（暗号化される）前に、ユーザーが入力した生のパスワードをメモ
+        String rawPassword = user.getPassword();
+
+        // エラーがなければ保存
         userService.registerUser(user);
-        return "redirect:/signup";
+        
+        // メモした生パスワードを使って、Spring Securityに自動ログインをお願いする
+        try {
+            request.login(user.getEmail(), rawPassword);
+        } catch (ServletException e) {
+            // 万が一ログインに失敗したら、とりあえずログイン画面へ
+            return "redirect:/login";
+        }
+
+        // 自動ログインが終わったら、登録画面ではなく TOP画面（"/"）へ
+        return "redirect:/";
     }
 }
