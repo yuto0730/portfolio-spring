@@ -151,7 +151,7 @@ main {
     font-style: normal;                /* WF指定: Regular */
 }
 
-/* --- エラーメッセージ（クラス名をHTMLと完全に一致させる） --- */
+/* --- エラーメッセージ --- */
 .error-message {
     color: #e53e3e;      /*エラーメッセージは赤*/
     font-size: 12px;

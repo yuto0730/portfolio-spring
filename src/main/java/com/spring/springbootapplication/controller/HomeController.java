@@ -8,7 +8,7 @@ public class HomeController {
 
     // 「 http://localhost:8080/mypage 」にアクセスが来たときの処理
     @GetMapping("/mypage")
-    public String index() {
+    public String mypage() {
         // index.html を画面に表示
         return "index"; 
     }
