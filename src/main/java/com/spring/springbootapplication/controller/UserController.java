@@ -33,13 +33,12 @@ public class UserController {
             return "signup";
         }
 
-        // DBに保存する（暗号化される）前に、ユーザーが入力した生のパスワードをメモ
         String rawPassword = user.getPassword();
 
         // エラーがなければ保存
         userService.registerUser(user);
         
-        // メモした生パスワードを使って、Spring Securityに自動ログインをお願いする
+        // メモした生パスワードを使って、Spring Securityに自動ログインを依頼する
         try {
             request.login(user.getEmail(), rawPassword);
         } catch (ServletException e) {
