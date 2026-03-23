@@ -1,0 +1,163 @@
+/* --------------------
+   全体の基本設定
+-------------------- */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #333;
+}
+
+/* --------------------
+   ヘッダー
+-------------------- */
+.header {
+    background-color: #1B5678;
+    height: 120px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 40px;
+}
+
+/* ロゴ: My Portfolio */
+.header-logo {
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-size: 36px;                   /* WF指定: 36px */
+    font-weight: 700;                  /* WF指定: Bold(700) */
+    font-style: normal;                /* WF指定: Regular */
+}
+
+/* ヘッダーのログインボタン */
+.login-header-btn {
+    background-color: #ffffff;
+    color: #1B5678;
+    border: none;
+    padding: 10px 32px;
+    border-radius: 4px;
+    
+    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-size: 18px;                   /* WF指定: 18px */
+    font-weight: 400;                  /* WF指定: Regular(400) */
+    font-style: normal;                /* WF指定: Regular */
+}
+
+/* --------------------
+   メインコンテンツ
+-------------------- */
+main {
+    padding-top: 80px;
+    padding-bottom: 319px; /* WFに記載のフッターまでの距離：319px */
+}
+
+.signup-container {
+    width: 480px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* タイトル: 新規登録 */
+.signup-container h2 {
+    margin: 0;
+    margin-bottom: 60px;
+    
+    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-size: 36px;                   /* WF指定: 36px */
+    font-weight: 400;                  /* WF指定: Regular(400) */
+    font-style: normal;                /* WF指定: Regular */
+}
+
+/* --------------------
+   フォーム
+-------------------- */
+.signup-form {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 48px;
+}
+
+/* ラベル: 氏名、メールアドレス、パスワード */
+.form-group label {
+    display: block;
+    color: #999999;
+    margin-bottom: 4px;
+    
+    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-size: 12px;                   /* WF指定: 12px */
+    font-weight: 400;                  /* WF指定: Regular(400) */
+    font-style: normal;                /* WF指定: Regular */
+}
+
+/* 入力欄 */
+.form-group input {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #cccccc;
+    padding: 8px 0;
+    
+    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-size: 16px;                   
+    font-weight: 400;                  /* WF指定: Regular(400) */
+}
+
+/* 登録するボタン */
+.submit-btn {
+    display: block;
+    margin: 0 auto;
+    background-color: #1B5678;
+    color: #ffffff;
+    border: none;
+    width: 144px;
+    height: 48px;
+    border-radius: 4px;
+    
+    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-size: 18px;                   /* WF指定: 18px */
+    font-weight: 400;                  /* WF指定: Regular(400) */
+    font-style: normal;                /* WF指定: Regular */
+}
+
+.submit-btn:hover {
+    background-color: #14405a;
+}
+
+/* --------------------
+   フッター
+-------------------- */
+.footer {
+    background-color: #1B5678;
+    height: 40px;
+    text-align: center;
+}
+
+/* フッターテキスト: portfolio site */
+.footer-container p {
+    color: #ffffff;
+    margin: 0;
+    line-height: 40px;
+    
+    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-size: 18px;                   /* WF指定: 18px */
+    font-weight: 400;                  /* WF指定: Regular(400) */
+    font-style: normal;                /* WF指定: Regular */
+}
+
+/* --- エラーメッセージ --- */
+.error-message {
+    color: #e53e3e;      /*エラーメッセージは赤*/
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0;
+    margin-top: 6px;     /* 入力欄とのスキマ */
+    display: block;  
+    text-align: left;
+}
