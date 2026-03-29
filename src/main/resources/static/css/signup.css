@@ -1,20 +1,20 @@
 /* --------------------
-   全体の基本設定
+    全体の基本設定
 -------------------- */
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif; /* // 指定 */
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
+    background-color: #ffffff; /* // 指定 */
     color: #333;
 }
 
 /* --------------------
-   ヘッダー
+    ヘッダー
 -------------------- */
 .header {
-    background-color: #1B5678;
-    height: 120px;
+    background-color: #1B5678; /* // 指定 */
+    height: 120px; /* // 指定 */
 }
 
 .header-container {
@@ -28,28 +28,14 @@ body {
 /* ロゴ: My Portfolio */
 .header-logo {
     color: #ffffff;
-    font-family: 'Roboto', sans-serif; /* WF指定 */
-    font-size: 36px;                   /* WF指定: 36px */
-    font-weight: 700;                  /* WF指定: Bold(700) */
-    font-style: normal;                /* WF指定: Regular */
-}
-
-/* ヘッダーのログインボタン */
-.login-header-btn {
-    background-color: #ffffff;
-    color: #1B5678;
-    border: none;
-    padding: 10px 32px;
-    border-radius: 4px;
-    
-    font-family: 'Roboto', sans-serif; /* WF指定 */
-    font-size: 18px;                   /* WF指定: 18px */
-    font-weight: 400;                  /* WF指定: Regular(400) */
-    font-style: normal;                /* WF指定: Regular */
+    font-family: 'Roboto', sans-serif; /* // 指定 */
+    font-size: 36px;                   /* // 指定 */
+    font-weight: 700;                  /* // 指定 */
+    font-style: normal;
 }
 
 /* --------------------
-   メインコンテンツ
+    メインコンテンツ
 -------------------- */
 main {
     padding-top: 80px;
@@ -57,43 +43,40 @@ main {
 }
 
 .signup-container {
-    width: 480px;
+    width: 480px; /* // 指定 */
     margin: 0 auto;
     text-align: center;
 }
 
-/* タイトル: 新規登録 */
+/* タイトル: ログイン / 新規登録 */
 .signup-container h2 {
     margin: 0;
-    margin-bottom: 60px;
-    
-    font-family: 'Roboto', sans-serif; /* WF指定 */
-    font-size: 36px;                   /* WF指定: 36px */
-    font-weight: 400;                  /* WF指定: Regular(400) */
-    font-style: normal;                /* WF指定: Regular */
+    margin-bottom: 60px; /* // 指定 */
+    font-family: 'Roboto', sans-serif; /* // 指定 */
+    font-size: 36px;                   /* // 指定 */
+    font-weight: 400;                  /* // 指定 */
+    font-style: normal;
 }
 
 /* --------------------
-   フォーム
+    フォーム
 -------------------- */
 .signup-form {
     text-align: left;
 }
 
 .form-group {
-    margin-bottom: 48px;
+    margin-bottom: 48px; /* // 指定 */
 }
 
 /* ラベル: 氏名、メールアドレス、パスワード */
 .form-group label {
     display: block;
-    color: #999999;
+    color: #999999; /* // 指定 */
     margin-bottom: 4px;
-    
-    font-family: 'Roboto', sans-serif; /* WF指定 */
-    font-size: 12px;                   /* WF指定: 12px */
-    font-weight: 400;                  /* WF指定: Regular(400) */
-    font-style: normal;                /* WF指定: Regular */
+    font-family: 'Roboto', sans-serif; /* // 指定 */
+    font-size: 12px;                   /* // 指定 */
+    font-weight: 400;                  /* // 指定 */
 }
 
 /* 入力欄 */
@@ -101,63 +84,71 @@ main {
     width: 100%;
     box-sizing: border-box;
     border: none;
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc; /* // 指定 */
     padding: 8px 0;
-    
-    font-family: 'Roboto', sans-serif; /* WF指定 */
-    font-size: 16px;                   
-    font-weight: 400;                  /* WF指定: Regular(400) */
+    font-family: 'Roboto', sans-serif; /* // 指定 */
+    font-size: 16px;                   /* // 指定 */
+    font-weight: 400;                  /* // 指定 */
+    background: transparent;           /* 追記 */
+    outline: none;                     /* 追記 */
 }
 
-/* 登録するボタン */
+/* ボタン (共通) */
 .submit-btn {
     display: block;
     margin: 0 auto;
-    background-color: #1B5678;
-    color: #ffffff;
+    background-color: #1B5678; /* // 指定 */
+    color: #ffffff;            /* // 指定 */
     border: none;
-    width: 144px;
-    height: 48px;
+    width: 480px;              /* // 指定 */
+    height: 48px;              /* // 指定 */
     border-radius: 4px;
-    
-    font-family: 'Roboto', sans-serif; /* WF指定 */
-    font-size: 18px;                   /* WF指定: 18px */
-    font-weight: 400;                  /* WF指定: Regular(400) */
-    font-style: normal;                /* WF指定: Regular */
+    font-family: 'Roboto', sans-serif; /* // 指定 */
+    font-size: 18px;                   /* // 指定 */
+    font-weight: 400;                  /* // 指定 */
+    cursor: pointer;
+    text-decoration: none;             /* 追記 */
+    line-height: 48px;                 /* 追記 */
+    margin-top: 16px;                  /* 追記 */
 }
 
-.submit-btn:hover {
-    background-color: #14405a;
+/* ログイン画面用：新規登録ボタンへの余白 */
+.btn-signup-link {
+    margin-top: 20px;  /* // 指定 */
 }
 
 /* --------------------
-   フッター
+    フッター
 -------------------- */
 .footer {
-    background-color: #1B5678;
-    height: 40px;
+    background-color: #1B5678; /* // 指定 */
+    height: 40px;              /* // 指定 */
     text-align: center;
+    position: fixed;           /* 追記 */
+    bottom: 0;                 /* 追記 */
+    width: 100%;               /* 追記 */
 }
 
-/* フッターテキスト: portfolio site */
 .footer-container p {
     color: #ffffff;
     margin: 0;
     line-height: 40px;
-    
-    font-family: 'Roboto', sans-serif; /* WF指定 */
-    font-size: 18px;                   /* WF指定: 18px */
-    font-weight: 400;                  /* WF指定: Regular(400) */
-    font-style: normal;                /* WF指定: Regular */
+    font-family: 'Roboto', sans-serif; /* // 指定 */
+    font-size: 18px;                   /* // 指定 */
+    font-weight: 400;                  /* // 指定 */
 }
 
 /* --- エラーメッセージ --- */
 .error-message {
-    color: #e53e3e;      /*エラーメッセージは赤*/
-    font-size: 12px;
-    font-weight: 400;
-    margin: 0;
-    margin-top: 6px;     /* 入力欄とのスキマ */
-    display: block;  
-    text-align: left;
+    color: #e53e3e;   /* // 指定 */
+    font-size: 12px;  /* // 指定 */
+    font-weight: 400; /* // 指定 */
+    margin-top: 6px;  
+    display: block;   
+    text-align: left; 
+}
+
+/* フッターに、名前がある時だけスラッシュを入れる */
+.login-name:not(:empty)::before {
+    content: " / ";
 }

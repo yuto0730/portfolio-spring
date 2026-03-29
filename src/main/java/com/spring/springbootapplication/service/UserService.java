@@ -40,4 +40,9 @@ public class UserService {
         // すべてOKなら保存
         return userRepository.save(user);
     }
+
+    public User findUserByEmail(String email) {
+        // リポジトリからメールアドレスで検索して、見つかったら返し、なければ null を返す
+        return userRepository.findByEmail(email).orElse(null);
+    }
 }

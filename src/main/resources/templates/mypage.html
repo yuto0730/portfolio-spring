@@ -1,33 +1,31 @@
 <!DOCTYPE html>
-<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>マイページ | My Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/signup.css}">
 </head>
-
 <body>
     <header class="header">
         <div class="header-container">
             <div class="header-logo">My Portfolio</div>
-            <form th:action="@{/logout}" method="post" style="margin: 0;">
-                <button type="submit" class="login-header-btn" style="cursor: pointer;">ログアウト</button>
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="login-header-btn">ログアウト</button>
             </form>
         </div>
     </header>
 
-    <main>
-        <div class="signup-container">
-            <h2>マイページ</h2>
-            <p style="text-align: center; margin-top: 20px;">ログインに成功しました！ようこそ会員さん！</p>
-        </div>
+    <main class="signup-container">
+        <h2>マイページ</h2>
+        <p>ログインに成功しました！ようこそ会員さん！</p>
     </main>
-
     <footer class="footer">
         <div class="footer-container">
-            <p>portfolio site</p>
+            <p>
+                portfolio site
+                <span class="login-name" th:text="${username}"></span>
+            </p>
         </div>
     </footer>
 </body>

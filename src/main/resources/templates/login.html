@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ログイン | My Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/signup.css}">
 </head>
-
 <body>
     <header class="header">
         <div class="header-container">
@@ -15,38 +13,34 @@
         </div>
     </header>
 
-    <main>
-        <div class="signup-container">
-            <h2>ログイン</h2>
+    <main class="signup-container">
+        <h2>ログイン</h2>
+        
+        <form th:action="@{/login}" method="post" class="signup-form">
+            <div class="form-group">
+                <label>メールアドレス</label>
+                <input type="email" name="username" required>
+            </div>
             
-            <form th:action="@{/login}" method="post" class="signup-form">
-                
-                <p class="error-message" th:if="${param.error}">メールアドレス、もしくはパスワードが間違っています</p>
+            <div class="form-group">
+                <label>パスワード</label>
+                <input type="password" name="password" required>
+            </div>
+            
+            <p th:if="${param.error}" class="error-message">メールアドレス、もしくはパスワードが間違っています</p>
 
-                <div class="form-group">
-                    <label for="email">メールアドレス</label>
-                    <input type="email" id="email" name="username">
-                </div>
-
-                <div class="form-group">
-                    <label for="password">パスワード</label>
-                    <input type="password" id="password" name="password">
-                </div>
-
-                <div class="button-group">
-                    <button type="submit" class="btn-primary">ログインする</button>
-                </div>
-                
-                <div class="link-group">
-                    <a th:href="@{/signup}" class="btn-secondary">新規登録する</a>
-                </div>
-            </form>
-        </div>
+            <button type="submit" class="submit-btn">ログインする</button>
+        </form>
+        
+        <a th:href="@{/signup}" class="submit-btn btn-signup-link">新規登録する</a>
     </main>
 
     <footer class="footer">
         <div class="footer-container">
-            <p>portfolio site</p>
+            <p>
+                portfolio site
+                <span class="login-name" sec:authentication="name"></span>
+            </p>
         </div>
     </footer>
 </body>
