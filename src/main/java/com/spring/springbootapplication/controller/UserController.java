@@ -46,8 +46,8 @@ public class UserController {
             return "redirect:/login";
         }
 
-        // 自動ログインが終わったら、登録画面ではなく mypage画面（"/mypage"）へ
-        return "redirect:/mypage";
+        // 自動ログインが終わったら、登録画面ではなく login画面（"/login"）へ
+        return "redirect:/login";
     }
 
     @GetMapping("/login")
