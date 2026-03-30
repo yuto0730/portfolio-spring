@@ -27,7 +27,7 @@
                 <input type="password" name="password" required>
             </div>
             
-            <p th:if="${param.error}" class="error-message">メールアドレス、もしくはパスワードが間違っています</p>
+            <p th:if="${errorMessage}" class="error-message" th:text="${errorMessage}"></p>
 
             <button type="submit" class="submit-btn">ログインする</button>
         </form>
