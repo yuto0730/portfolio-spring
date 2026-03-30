@@ -33,6 +33,7 @@ public class SecurityConfig {
             .formLogin(login -> login
                 .loginPage("/login")         // ログイン画面login.htmlを使う
                 .defaultSuccessUrl("/mypage") // ログインに成功したら/mypageへ飛ばす
+                .failureUrl("/login")
                 .permitAll()                 // ログイン画面自体は全員に公開する
             )
             // セキュリティ設定の微調整

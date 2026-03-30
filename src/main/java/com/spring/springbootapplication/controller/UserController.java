@@ -49,9 +49,4 @@ public class UserController {
         // 自動ログインが終わったら、登録画面ではなく login画面（"/login"）へ
         return "redirect:/login";
     }
-
-    @GetMapping("/login")
-        public String showLoginPage() {
-        return "login"; // login.htmlを呼び出す
-    }
 }
