@@ -172,3 +172,27 @@ main {
 .login-name:not(:empty)::before {
     content: " / ";
 }
+
+/* --------------------
+    マイページ：ログアウトボタン
+-------------------- */
+.logout-header-btn {
+    width: 170px;                      /* // 指定 */
+    height: 53px;                      /* // 指定 */
+    padding: 16px 40px;                /* // 指定 */
+    background-color: #ffffff;         /* // 指定 */
+    color: #1B5678;                    /* // 指定 */
+    border-radius: 4px;                /* // 指定 */
+    font-family: 'Roboto', sans-serif; /* // 指定 */
+    font-size: 18px;                   /* // 指定 */
+    font-weight: 700;                  /* // 指定 */
+    
+    /* 中央に寄せるための設定 */
+    border: none;                      
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;                   
+    text-decoration: none;             
+}

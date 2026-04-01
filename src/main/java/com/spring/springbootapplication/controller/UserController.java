@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping; 
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.spring.springbootapplication.entity.User;
 import com.spring.springbootapplication.service.UserService;
 import jakarta.validation.Valid;
@@ -47,6 +49,13 @@ public class UserController {
         }
 
         // 自動ログインが終わったら、登録画面ではなく login画面（"/login"）へ
+        return "redirect:/login";
+    }
+
+    @GetMapping("/logout-callback")
+    public String logoutCallback(RedirectAttributes redirectAttributes) {
+        // フラッシュメッセージ
+        redirectAttributes.addFlashAttribute("message", "ログアウトしました");
         return "redirect:/login";
     }
 }

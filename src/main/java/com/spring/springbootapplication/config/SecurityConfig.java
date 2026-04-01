@@ -25,7 +25,7 @@ public class SecurityConfig {
             //  誰でも見れるページと、ログインが必要なページを分ける
             .authorizeHttpRequests(auth -> auth
                 // 登録・ログイン画面・CSSは、ログイン前でもアクセスを許可する
-                .requestMatchers("/signup", "/login", "/css/**").permitAll() 
+                .requestMatchers("/signup", "/login", "/css/**","/logout-callback").permitAll() 
                 // それ以外のページ（マイページなど）は、ログインしていないと弾く
                 .anyRequest().authenticated() 
             )
@@ -39,6 +39,13 @@ public class SecurityConfig {
             // セキュリティ設定の微調整
             // POST送信（データの保存）を許可するためにCSRF対策を無効にする
             .csrf(AbstractHttpConfigurer::disable)
+            // ログアウト機能の設定
+            .logout(logout -> logout
+                .logoutUrl("/logout")                // ログアウトを実行するURL
+                .logoutSuccessUrl("/logout-callback")   // 成功後のリダイレクト先
+                .invalidateHttpSession(true)         // セッションを無効化
+                .deleteCookies("JSESSIONID")         // クッキーを削除
+            )
             .build();
     }
 }
