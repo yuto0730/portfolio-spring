@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>マイページ | My Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/css/signup.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/mypage.css}">
 </head>
 <body>
     <header class="header">
@@ -16,11 +17,25 @@
         </div>
     </header>
 
-    <main class="signup-container">
-        <h2>マイページ</h2>
-        <p>ログインに成功しました！ようこそ会員さん！</p>
+    <main class="main-wrapper">
+        
+        <section class="profile-section">
+            <div class="avatar-container">
+                <div class="avatar-image-placeholder">
+                    </div>
+                <p class="profile-user-name" th:text="${username}"></p>
+            </div>
+
+           <div class="intro-container">
+                <h2 class="intro-title">自己紹介</h2>
+                <div class="intro-text-box">
+                    </div>
+                <button type="button" class="profile-edit-btn">自己紹介を編集する</button>
+            </div>
+        </section>
     </main>
-    <footer class="footer">
+
+   <footer class="footer">
         <div class="footer-container">
             <p>
                 portfolio site
