@@ -75,6 +75,8 @@ main {
     font-size: 18px;                   /*指定*/
     font-weight: 400;                  /*指定*/
     margin-top: 16px;
+    line-height: 48px;                 /*指定*/
+    text-decoration: none;
 }
 
 /* 新規登録はこちらへのリンク余白 */
