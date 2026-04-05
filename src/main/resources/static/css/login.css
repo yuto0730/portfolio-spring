@@ -5,21 +5,21 @@
 ========================================================= */
 main {
     padding-top: 80px;
-    padding-bottom: 319px; /* WFに記載のフッターまでの距離：319px */
+    padding-bottom: 319px; /*指定*/
 }
 
 .signup-container {
-    width: 480px; /* // 指定 */
+    width: 480px; /*指定*/
     margin: 0 auto;
     text-align: center;
 }
 
 .signup-container h2 {
     margin: 0;
-    margin-bottom: 60px;               /* // 指定 */
-    font-family: 'Roboto', sans-serif; /* // 指定 */
-    font-size: 36px;                   /* // 指定 */
-    font-weight: 400;                  /* // 指定 */
+    margin-bottom: 60px;               /*指定*/
+    font-family: 'Roboto', sans-serif; /*指定*/
+    font-size: 36px;                   /*指定*/
+    font-weight: 400;                  /*指定*/
     font-style: normal;
 }
 
@@ -31,17 +31,17 @@ main {
 }
 
 .form-group {
-    margin-bottom: 48px; /* // 指定 */
+    margin-bottom: 48px; /*指定*/
 }
 
 /* ラベル (メールアドレス、パスワード) */
 .form-group label {
     display: block;
-    color: #999999;                    /* // 指定 */
+    color: #999999;                    /*指定*/
     margin-bottom: 4px;
-    font-family: 'Roboto', sans-serif; /* // 指定 */
-    font-size: 12px;                   /* // 指定 */
-    font-weight: 400;                  /* // 指定 */
+    font-family: 'Roboto', sans-serif; /*指定*/
+    font-size: 12px;                   /*指定*/
+    font-weight: 400;                  /*指定*/
 }
 
 /* 入力欄 */
@@ -49,11 +49,11 @@ main {
     width: 100%;
     box-sizing: border-box;
     border: none;
-    border-bottom: 1px solid #cccccc;  /* // 指定 */
+    border-bottom: 1px solid #cccccc;  /*指定*/
     padding: 8px 0;
-    font-family: 'Roboto', sans-serif; /* // 指定 */
-    font-size: 16px;                   /* // 指定 */
-    font-weight: 400;                  /* // 指定 */
+    font-family: 'Roboto', sans-serif; /*指定*/
+    font-size: 16px;                   /*指定*/
+    font-weight: 400;                  /*指定*/
     background: transparent;
     outline: none;
 }
@@ -65,15 +65,15 @@ main {
 .submit-btn {
     display: block;
     margin: 0 auto;
-    background-color: #1B5678;         /* // 指定 */
-    color: #ffffff;                    /* // 指定 */
+    background-color: #1B5678;         /*指定*/
+    color: #ffffff;                    /*指定*/
     border: none;
-    width: 480px;                      /* // 指定 */
-    height: 48px;                      /* // 指定 */
+    width: 480px;                      /*指定*/
+    height: 48px;                      /*指定*/
     border-radius: 4px;
-    font-family: 'Roboto', sans-serif; /* // 指定 */
-    font-size: 18px;                   /* // 指定 */
-    font-weight: 400;                  /* // 指定 */
+    font-family: 'Roboto', sans-serif; /*指定*/
+    font-size: 18px;                   /*指定*/
+    font-weight: 400;                  /*指定*/
     cursor: pointer;
     text-decoration: none;
     line-height: 48px;
@@ -82,14 +82,14 @@ main {
 
 /* 新規登録はこちらへのリンク余白 */
 .btn-signup-link {
-    margin-top: 20px;  /* // 指定 */
+    margin-top: 20px;  /*指定*/
 }
 
 /* エラーメッセージ */
 .error-message {
-    color: #e53e3e;   /* // 指定 */
-    font-size: 12px;  /* // 指定 */
-    font-weight: 400; /* // 指定 */
+    color: #e53e3e;   /*指定*/
+    font-size: 12px;  /*指定*/
+    font-weight: 400; /*指定*/
     margin-top: 6px;
     display: block;
     text-align: left;
