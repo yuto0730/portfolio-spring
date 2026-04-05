@@ -1,124 +1,157 @@
-/* --------------------
-    全体の基本設定
--------------------- */
+@charset "UTF-8";
+
+/* =========================================================
+   【全体共通】ベース設定
+   すべての画面の基本となるフォントや背景色を指定します
+========================================================= */
 body {
-    font-family: 'Roboto', sans-serif; /* // 指定 */
+    font-family: 'Roboto', sans-serif; /* // 指定: 全体のフォント */
     margin: 0;
     padding: 0;
-    background-color: #ffffff; /* // 指定 */
+    background-color: #ffffff; /* // 指定: 全体の背景色（白） */
     color: #333;
 }
 
-/* --------------------
-    ヘッダー
--------------------- */
+/* =========================================================
+   【共通部分】ヘッダー（画面上部の青い帯）
+   全画面で使い回す上部のナビゲーション部分です
+========================================================= */
+/* ヘッダー全体の大枠（青い背景） */
 .header {
-    background-color: #1B5678; /* // 指定 */
-    height: 120px; /* // 指定 */
+    width: 100%;
+    min-width: 1440px; /* // 指定: 最低幅 */
+    height: 120px; /* // 指定: 高さ */
+    background-color: #1B5678; /* // 指定: 背景色（青） */
 }
 
+/* ヘッダーの中身（ロゴとボタンを左右に分ける設定） */
 .header-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-between; /* ロゴは左端、ボタンは右端に配置 */
+    align-items: center; /* 縦の真ん中に揃える */
     height: 100%;
-    padding: 0 40px;
+    padding: 0 40px; /* // 指定: 左右の余白 */
+    box-sizing: border-box;
 }
 
-/* ロゴ: My Portfolio */
+/* 左側のロゴテキスト（My Portfolio） */
 .header-logo {
     color: #ffffff;
     font-family: 'Roboto', sans-serif; /* // 指定 */
     font-size: 36px;                   /* // 指定 */
-    font-weight: 700;                  /* // 指定 */
+    font-weight: 700;                  /* // 指定: 太字 */
     font-style: normal;
 }
 
-/* ログインボタン（ヘッダー右側） */
+/* =========================================================
+   【共通部分】ヘッダー内のボタン
+   ログイン画面とマイページで表示が切り替わるボタンです
+========================================================= */
+/* ログインボタン（新規登録画面などの右上に表示） */
 .login-header-btn {
     width: 152px;                      /* // 指定 */
     height: 53px;                      /* // 指定 */
     padding: 16px 40px;                /* // 指定 */
-    background-color: #ffffff;         /* // 指定 */
-    color: #1B5678;                    /* // 指定 */
-    border-radius: 4px;                /* // 指定 */
+    background-color: #ffffff;         /* // 指定: 白背景 */
+    color: #1B5678;                    /* // 指定: 青文字 */
+    border-radius: 4px;                /* // 指定: 角丸 */
     font-family: 'Roboto', sans-serif; /* // 指定 */
     font-size: 16px;                   /* // 指定 */
-    font-weight: 700;                  /* // 指定 */
-    
-    /* 中央に寄せるための設定 */
-    border: none;                      
+    font-weight: 700;                  /* // 指定: 太字 */
+    border: none;
+    display: flex;
+    justify-content: center; /* 文字を左右中央に */
+    align-items: center;     /* 文字を上下中央に */
+    box-sizing: border-box;
+}
+
+/* ログアウトボタン（マイページの右上に表示） */
+.logout-header-btn {
+    width: 170px;                      /* // 指定 */
+    height: 53px;                      /* // 指定 */
+    padding: 16px 40px;                /* // 指定 */
+    background-color: #ffffff;         /* // 指定: 白背景 */
+    color: #1B5678;                    /* // 指定: 青文字 */
+    border-radius: 4px;                /* // 指定: 角丸 */
+    font-family: 'Roboto', sans-serif; /* // 指定 */
+    font-size: 18px;                   /* // 指定: ログインボタンより少し大きい */
+    font-weight: 700;                  /* // 指定: 太字 */
+    border: none;
     display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+    cursor: pointer;                   /* ホバー時に指マークにする */
+    text-decoration: none;
 }
 
-/* --------------------
-    メインコンテンツ
--------------------- */
+/* =========================================================
+   【非ログイン画面】新規登録・ログイン画面
+   中央に配置されるフォーム領域の設定です
+========================================================= */
+/* メインコンテンツ全体の大枠 */
 main {
     padding-top: 80px;
-    padding-bottom: 319px; /* WFに記載のフッターまでの距離：319px */
+    padding-bottom: 319px; /* WFに記載のフッターまでの距離 */
 }
 
+/* フォームが入る中央の箱 */
 .signup-container {
-    width: 480px; /* // 指定 */
-    margin: 0 auto;
+    width: 480px; /* // 指定: フォーム領域の幅 */
+    margin: 0 auto; /* 画面中央に配置 */
     text-align: center;
 }
 
-/* タイトル: ログイン / 新規登録 */
+/* 画面のタイトル（「新規登録」「ログイン」など） */
 .signup-container h2 {
     margin: 0;
-    margin-bottom: 60px; /* // 指定 */
+    margin-bottom: 60px; /* // 指定: 下のフォームとの隙間 */
     font-family: 'Roboto', sans-serif; /* // 指定 */
     font-size: 36px;                   /* // 指定 */
     font-weight: 400;                  /* // 指定 */
     font-style: normal;
 }
 
-/* --------------------
-    フォーム
--------------------- */
+/* フォーム全体を左寄せに */
 .signup-form {
     text-align: left;
 }
 
+/* 各入力項目のまとまり（ラベル＋入力欄） */
 .form-group {
-    margin-bottom: 48px; /* // 指定 */
+    margin-bottom: 48px; /* // 指定: 次の入力項目との隙間 */
 }
 
-/* ラベル: 氏名、メールアドレス、パスワード */
+/* 入力欄の上のテキスト（メールアドレス、パスワード等） */
 .form-group label {
     display: block;
-    color: #999999; /* // 指定 */
+    color: #999999; /* // 指定: 薄いグレー */
     margin-bottom: 4px;
     font-family: 'Roboto', sans-serif; /* // 指定 */
     font-size: 12px;                   /* // 指定 */
     font-weight: 400;                  /* // 指定 */
 }
 
-/* 入力欄 */
+/* 実際の入力枠（アンダーラインのみのデザイン） */
 .form-group input {
     width: 100%;
     box-sizing: border-box;
     border: none;
-    border-bottom: 1px solid #cccccc; /* // 指定 */
+    border-bottom: 1px solid #cccccc; /* // 指定: 下線のみ表示 */
     padding: 8px 0;
     font-family: 'Roboto', sans-serif; /* // 指定 */
     font-size: 16px;                   /* // 指定 */
     font-weight: 400;                  /* // 指定 */
-    background: transparent;           /* 追記 */
-    outline: none;                     /* 追記 */
+    background: transparent;
+    outline: none; /* クリック時の青枠を消す */
 }
 
-/* ボタン (共通) */
+/* 送信ボタン（新規登録する、ログインする 等） */
 .submit-btn {
     display: block;
     margin: 0 auto;
-    background-color: #1B5678; /* // 指定 */
-    color: #ffffff;            /* // 指定 */
+    background-color: #1B5678; /* // 指定: 青背景 */
+    color: #ffffff;            /* // 指定: 白文字 */
     border: none;
     width: 480px;              /* // 指定 */
     height: 48px;              /* // 指定 */
@@ -127,72 +160,122 @@ main {
     font-size: 18px;                   /* // 指定 */
     font-weight: 400;                  /* // 指定 */
     cursor: pointer;
-    text-decoration: none;             /* 追記 */
-    line-height: 48px;                 /* 追記 */
-    margin-top: 16px;                  /* 追記 */
+    text-decoration: none;
+    line-height: 48px;
+    margin-top: 16px;
 }
 
-/* ログイン画面用：新規登録ボタンへの余白 */
+/* ログイン画面にある「新規登録はこちら」リンク用の隙間 */
 .btn-signup-link {
     margin-top: 20px;  /* // 指定 */
 }
 
-/* --------------------
-    フッター
--------------------- */
-.footer {
-    background-color: #1B5678; /* // 指定 */
-    height: 40px;              /* // 指定 */
-    text-align: center;
-    position: fixed;           /* 追記 */
-    bottom: 0;                 /* 追記 */
-    width: 100%;               /* 追記 */
+/* バリデーションエラー時の赤文字メッセージ */
+.error-message {
+    color: #e53e3e;   /* // 指定: 赤色 */
+    font-size: 12px;  /* // 指定 */
+    font-weight: 400; /* // 指定 */
+    margin-top: 6px;
+    display: block;
+    text-align: left;
 }
 
+/* =========================================================
+   【ログイン後画面】マイページ（TOP画面）
+   ログインしたユーザーのプロフィールを表示する領域です
+========================================================= */
+/* マイページのメインコンテンツ幅（中央寄せ） */
+.main-wrapper {
+    width: 960px; /* // 指定: メインコンテンツの幅 */
+    margin: 120px auto; /* // 指定: ヘッダーからの距離と中央寄せ */
+}
+
+/* プロフィール部分の横並び設定（左：画像、右：自己紹介） */
+.profile-section {
+    display: flex;
+    gap: 80px; /* // 指定: 画像と自己紹介の間の隙間 */
+    align-items: flex-start;
+}
+
+/* --- 左側：アバター（プロフィール画像）エリア --- */
+.avatar-container {
+    width: 360px; /* // 指定: アバターエリアの幅 */
+    text-align: center;
+}
+
+/* 画像がない場合のグレーの丸い背景 */
+.avatar-image-placeholder {
+    width: 360px; /* // 指定 */
+    height: 360px; /* // 指定 */
+    background-color: #D9D9D9; /* // 指定: グレー */
+    border-radius: 50%; /* 正円にする */
+    margin-bottom: 20px;
+}
+
+/* プロフィール画像の下のユーザー名 */
+.profile-user-name {
+    font-family: 'Roboto', sans-serif; /* // 指定 */
+    font-size: 20px; /* // 指定 */
+    margin: 0;
+}
+
+/* --- 右側：自己紹介文エリア --- */
+.intro-container {
+    width: 520px; /* // 指定: 自己紹介エリアの幅 */
+}
+
+/* 「自己紹介」の見出し（黒い下線付き） */
+.intro-title {
+    font-family: 'Roboto', sans-serif; /* // 指定 */
+    font-size: 36px; /* // 指定 */
+    font-weight: bold; /* // 指定: 太字 */
+    margin-bottom: 30px;
+    border-bottom: 2px solid #000; /* // 指定: 黒い下線 */
+    padding-bottom: 10px;
+}
+
+/* 自己紹介の本文テキスト */
+.intro-text-box {
+    font-size: 20px; /* // 指定 */
+    line-height: 1.5;
+    margin-bottom: 40px; /* 下のボタンとの隙間 */
+}
+
+/* 自己紹介を編集するボタン */
+.profile-edit-btn {
+    width: 242px; /* // 指定 */
+    height: 53px; /* // 指定 */
+    background-color: #1B5678; /* // 指定: 青背景 */
+    color: #FFFFFF; /* // 指定: 白文字 */
+    border: none;
+    border-radius: 4px;
+    font-size: 20px; /* // 指定 */
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif; /* // 指定 */
+}
+
+/* =========================================================
+   【共通部分】フッター（画面最下部の青い帯）
+========================================================= */
+/* フッター全体の大枠 */
+.footer {
+    background-color: #1B5678; /* // 指定: 青背景 */
+    height: 40px;              /* // 指定: 高さ */
+    text-align: center;
+    width: 100%;
+}
+
+/* フッターの中のテキスト（portfolio site 等） */
 .footer-container p {
     color: #ffffff;
     margin: 0;
-    line-height: 40px;
+    line-height: 40px; /* 高さと同じにして上下中央に配置 */
     font-family: 'Roboto', sans-serif; /* // 指定 */
     font-size: 18px;                   /* // 指定 */
     font-weight: 400;                  /* // 指定 */
 }
 
-/* --- エラーメッセージ --- */
-.error-message {
-    color: #e53e3e;   /* // 指定 */
-    font-size: 12px;  /* // 指定 */
-    font-weight: 400; /* // 指定 */
-    margin-top: 6px;  
-    display: block;   
-    text-align: left; 
-}
-
-/* フッターに、名前がある時だけスラッシュを入れる */
+/* フッターにログインユーザー名がある時だけ「 / 」を名前の左に入れる */
 .login-name:not(:empty)::before {
     content: " / ";
-}
-
-/* --------------------
-    マイページ：ログアウトボタン
--------------------- */
-.logout-header-btn {
-    width: 170px;                      /* // 指定 */
-    height: 53px;                      /* // 指定 */
-    padding: 16px 40px;                /* // 指定 */
-    background-color: #ffffff;         /* // 指定 */
-    color: #1B5678;                    /* // 指定 */
-    border-radius: 4px;                /* // 指定 */
-    font-family: 'Roboto', sans-serif; /* // 指定 */
-    font-size: 18px;                   /* // 指定 */
-    font-weight: 700;                  /* // 指定 */
-    
-    /* 中央に寄せるための設定 */
-    border: none;                      
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    cursor: pointer;                   
-    text-decoration: none;             
 }

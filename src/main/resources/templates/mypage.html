@@ -25,19 +25,21 @@
                 <p class="profile-user-name" th:text="${username}"></p>
             </div>
 
-            <div class="intro-container">
+           <div class="intro-container">
                 <h2 class="intro-title">自己紹介</h2>
                 <div class="intro-text-box">
-                    <p>自分の自己紹介文章が入ります。自分の自己紹介文章が入ります。自分の自己紹介文章が入ります。</p>
-                </div>
+                    </div>
                 <button type="button" class="profile-edit-btn">自己紹介を編集する</button>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
+   <footer class="footer">
         <div class="footer-container">
-            <p>portfolio site</p>
+            <p>
+                portfolio site
+                <span class="login-name" th:text="${username}"></span>
+            </p>
         </div>
     </footer>
 </body>
