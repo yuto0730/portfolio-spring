@@ -74,9 +74,6 @@ main {
     font-family: 'Roboto', sans-serif; /*指定*/
     font-size: 18px;                   /*指定*/
     font-weight: 400;                  /*指定*/
-    cursor: pointer;
-    text-decoration: none;
-    line-height: 48px;
     margin-top: 16px;
 }
 

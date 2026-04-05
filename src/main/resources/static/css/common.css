@@ -79,8 +79,6 @@ body {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    cursor: pointer;
-    text-decoration: none;
 }
 
 /*仮メインコンテンツは余ったスペースをすべて埋める*/
