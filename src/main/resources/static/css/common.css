@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+/* =========================================================
+   【全体共通】ベース設定
+========================================================= */
+body {
+    font-family: 'Roboto', sans-serif; /* // 指定 */
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;         /* // 指定 */
+    color: #333;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* 画面の高さ(100vh)を最低限確保する */
+}
+
+/* =========================================================
+   【共通部分】ヘッダー枠とロゴ
+========================================================= */
+.header {
+    width: 100%;
+    min-width: 1440px;         /* // 指定 */
+    height: 120px;             /* // 指定 */
+    background-color: #1B5678; /* // 指定 */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 40px;           /* // 指定 */
+    box-sizing: border-box;
+}
+
+.header-logo {
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif; /* // 指定 */
+    font-size: 36px;                   /* // 指定 */
+    font-weight: 700;                  /* // 指定 */
+    font-style: normal;
+}
+
+/* =========================================================
+   【共通部分】ヘッダー内のボタン
+========================================================= */
+/* ログインボタン（新規登録・ログイン画面用） */
+.login-header-btn {
+    width: 152px;                      /* // 指定 */
+    height: 53px;                      /* // 指定 */
+    padding: 16px 40px;                /* // 指定 */
+    background-color: #ffffff;         /* // 指定 */
+    color: #1B5678;                    /* // 指定 */
+    border-radius: 4px;                /* // 指定 */
+    font-family: 'Roboto', sans-serif; /* // 指定 */
+    font-size: 16px;                   /* // 指定 */
+    font-weight: 700;                  /* // 指定 */
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* ログアウトボタン（マイページ用） */
+.logout-header-btn {
+    width: 170px;                      /* // 指定 */
+    height: 53px;                      /* // 指定 */
+    padding: 16px 40px;                /* // 指定 */
+    background-color: #ffffff;         /* // 指定 */
+    color: #1B5678;                    /* // 指定 */
+    border-radius: 4px;                /* // 指定 */
+    font-family: 'Roboto', sans-serif; /* // 指定 */
+    font-size: 18px;                   /* // 指定 */
+    font-weight: 700;                  /* // 指定 */
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/*仮メインコンテンツは余ったスペースをすべて埋める*/
+main {
+    flex: 1;
+}
+
+/* =========================================================
+   【共通部分】フッター
+========================================================= */
+.footer {
+    background-color: #1B5678; /* // 指定 */
+    height: 40px;              /* // 指定 */
+    text-align: center;
+    width: 100%;
+}
+
+.footer-container p {
+    color: #ffffff;
+    margin: 0;
+    line-height: 40px;
+    font-family: 'Roboto', sans-serif; /* // 指定 */
+    font-size: 18px;                   /* // 指定 */
+    font-weight: 400;                  /* // 指定 */
+}
