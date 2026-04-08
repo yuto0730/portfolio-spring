@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>自己紹介を編集する | My Portfolio</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/profile-edit.css}">
+</head>
+<body>
+    <header class="header">
+        <h1 class="logo">My Portfolio</h1>
+        <button class="logout-header-btn">ログアウト</button>
+    </header>
+
+    <main class="main-wrapper">
+        <h2 class="page-title">自己紹介を編集する</h2>
+
+        <form th:action="@{/profile/edit}" method="post" th:object="${profileEditForm}" enctype="multipart/form-data" class="edit-form">
+            
+            <div class="form-group">
+                <label for="selfIntroduction" class="form-label">自己紹介文</label>
+                <textarea id="selfIntroduction" th:field="*{selfIntroduction}" class="form-textarea" placeholder="50文字以上、200文字以下で入力してください。"></textarea>
+                
+                <div th:if="${#fields.hasErrors('selfIntroduction')}" th:errors="*{selfIntroduction}" class="error-message"></div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">アバター画像</label>
+                <label for="profileImage" class="file-upload-btn">
+                    画像ファイルを添付する
+                    <input type="file" id="profileImage" name="profileImage" class="file-input" accept="image/*">
+                </label>
+                <span id="fileNameDisplay" class="file-name-display"></span>
+            </div>
+
+            <button type="submit" class="submit-btn">自己紹介を確定する</button>
+        </form>
+    </main>
+</body>
+</html>

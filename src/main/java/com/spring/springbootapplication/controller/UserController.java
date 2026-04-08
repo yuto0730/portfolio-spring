@@ -6,12 +6,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.ui.Model;
 
 import com.spring.springbootapplication.entity.User;
 import com.spring.springbootapplication.service.UserService;
 import jakarta.validation.Valid;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.ServletException;
+
 
 @Controller
 public class UserController {
@@ -57,5 +59,13 @@ public class UserController {
         // フラッシュメッセージ
         redirectAttributes.addFlashAttribute("message", "ログアウトしました");
         return "redirect:/login";
+    }
+
+    // プロフィール編集画面を表示する
+    @GetMapping("/profile/edit")
+    public String showProfileEditPage(Model model) {
+        // HTML側(th:object)で使うためのフォームを準備して画面に渡す
+        model.addAttribute("profileEditForm", new com.spring.springbootapplication.form.ProfileEditForm());
+        return "profile-edit";
     }
 }
