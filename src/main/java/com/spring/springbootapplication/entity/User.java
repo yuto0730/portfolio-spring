@@ -29,7 +29,8 @@ public class User {
     private String password;
 
     // 自己紹介文(50文字以上200文字以下)
-    @Size(max = 200, message = "自己紹介は200文字以下で入力してください")
+    @NotBlank(message = "自己紹介は50文字以上200文字以下で入力してください")
+    @Size(min = 50, max = 200, message = "自己紹介は50文字以上200文字以下で入力してください")
     @Column(name = "self_introduction", length = 200)
     private String selfIntroduction;
 
