@@ -8,8 +8,10 @@
 </head>
 <body>
     <header class="header">
-        <h1 class="logo">My Portfolio</h1>
-        <button class="logout-header-btn">ログアウト</button>
+        <div class="header-container">
+            <h1 class="header-logo">My Portfolio</h1>
+            <button class="logout-header-btn">ログアウト</button>
+        </div>
     </header>
 
     <main class="main-wrapper">
@@ -19,7 +21,9 @@
             
             <div class="form-group">
                 <label for="selfIntroduction" class="form-label">自己紹介文</label>
-                <textarea id="selfIntroduction" th:field="*{selfIntroduction}" class="form-textarea" placeholder="50文字以上、200文字以下で入力してください。"></textarea>
+                <textarea id="selfIntroduction" th:field="*{selfIntroduction}" class="form-textarea"></textarea>
+                
+                <p class="helper-text">50文字以上、200文字以下で入力してください。</p>
                 
                 <div th:if="${#fields.hasErrors('selfIntroduction')}" th:errors="*{selfIntroduction}" class="error-message"></div>
             </div>
@@ -36,5 +40,9 @@
             <button type="submit" class="submit-btn">自己紹介を確定する</button>
         </form>
     </main>
+
+    <footer class="footer">
+        <p class="footer-text">portfolio site</p>
+    </footer>
 </body>
 </html>

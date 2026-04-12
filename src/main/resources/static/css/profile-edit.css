@@ -4,32 +4,43 @@
 .main-wrapper {
     display: flex;
     flex-direction: column;
-    align-items: center; /* フォーム全体を中央に配置するための構造指定 */
+    align-items: center;
+    max-width: 1440px; /* WF指定 */
+    width: 100%; 
+    padding-bottom: 314px; /* WF指定: フッターまでの距離 */
+    background-color: #FFFFFF; /* WF指定 */
+    margin: 0 auto;
 }
 
 .page-title {
+    width: 324px; /* WF指定 */
+    height: 48px; /* WF指定 */
     font-family: 'Roboto', sans-serif; /* WF指定 */
     font-size: 36px; /* WF指定 */
-    font-weight: normal; /* WF指定: Regular */
-    color: rgba(0, 0, 0, 0.75); /* WF指定: 75% */
-    text-align: center; /* テキストの中央寄せ */
-    margin-bottom: 60px; /* WFに明記がないため、レイアウト崩れを防ぐための仮の余白 */
+    font-weight: 400; /* WF指定: Regular (400) */
+    /* ↓【修正】黒の75%に変更しました↓ */
+    color: rgba(0, 0, 0, 0.75); /* WF指定: 黒の75% */
+    margin-top: 80px; /* WF指定: ヘッダーからの距離 */
+    margin-bottom: 80px; /* WF指定: フォームまでの距離 */
+    text-align: center; /* WF指定:中央 */
 }
 
 /* =========================================================
    【自己紹介編集画面】フォーム全体
 ========================================================= */
 .edit-form {
-    width: 960px; /* WF指定 */
-    height: 342px; /* WF指定: 内包高さ */
+    max-width: 960px; /* WF指定 */
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 48px; /* WF指定: 間隔48px */
+    gap: 48px; /* WF指定 */
+    box-sizing: border-box;
 }
 
 .form-group {
-    width: 480px; /* WF指定 */
+    max-width: 480px; /* WF指定 */
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -40,44 +51,65 @@
 .form-label {
     font-family: 'Roboto', sans-serif; /* WF指定 */
     font-size: 12px; /* WF指定 */
-    color: rgba(0, 0, 0, 0.54); /* WF指定: 54% */
+    color: rgba(0, 0, 0, 0.54); /* WF指定 */
+    margin-bottom: 10px; /* WF指定 */
 }
 
 .form-textarea {
-    width: 480px; /* WF指定 */
-    height: 95px; /* WF指定: テキスト入力エリアの内包高さ */
+    max-width: 480px; /* WF指定 */
+    width: 100%;
+    height: 95px; /* WF指定 */
     font-family: 'Roboto', sans-serif; /* WF指定 */
     font-size: 18px; /* WF指定 */
-    color: rgba(0, 0, 0, 0.87); /* WF指定: 87% */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.54); /* WF指定: 下線の幅と色 */
+    color: rgba(0, 0, 0, 0.87); /* WF指定 */
+    border: none; /* 四角い枠線を消す */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.87); /* WF指定: default時の1px線 */
     background-color: transparent;
+    line-height: 1.5; /* WF指定 */
+    padding-bottom: 1px;
 }
 
-/* HTML側で設定したプレースホルダー（50文字以上〜のテキスト）用 */
-.form-textarea::placeholder {
+/* テキストエリアが選択（active）された時の指定*/
+.form-textarea:focus {
+    outline: none; /* ブラウザ標準の四角い枠線を消す */
+    border-bottom: 2px solid #000000; /* WF指定: active時は2pxの黒線 */
+    padding-bottom: 0; /* 線が太くなっても全体の高さが変わらないようにする */
+}
+
+/* =========================================================
+   【自己紹介編集画面】50文字以上、200文字以下で入力してください
+========================================================= */
+.helper-text {
     font-family: 'Roboto', sans-serif; /* WF指定 */
-    font-size: 12px; /* WF指定: Helper textのサイズ */
-    color: rgba(0, 0, 0, 0.54); /* WF指定: 54% */
+    font-size: 12px; /* WF指定 */
+    font-weight: 400; /* WF指定 */
+    line-height: 20px; /* WF指定 */
+    letter-spacing: 0.4px; /* WF指定 */
+    color: rgba(0, 0, 0, 0.54); /* WF指定: 黒の54% */
+    margin-top: 4px; /* 線との隙間 */
+    margin-bottom: 0;
+    text-align: left; /* 左寄せ */
 }
 
 .error-message {
     font-family: 'Roboto', sans-serif; /* WF指定 */
-    font-size: 12px; /* WF指定: エラーメッセージもフォントサイズは統一 */
-    color: #FF0000; /* 要件指定: 赤字で表示 */
+    font-size: 12px; /* WF指定 */
+    color: #FF0000;
 }
 
 /* =========================================================
    【自己紹介編集画面】ファイルアップロード関連
 ========================================================= */
 .file-input {
-    display: none; /* デフォルトの「ファイルを選択」ボタンを隠すための必須構造 */
+    display: none;
 }
 
 .file-upload-btn {
-    width: 202px; /* WF指定 */
+    max-width: 202px; /* WF指定 */
+    width: 100%;
     height: 32px; /* WF指定 */
-    background-color: rgba(0, 0, 0, 0.10); /* WF指定: 10% */
-    color: rgba(0, 0, 0, 0.75); /* WF指定: 75% */
+    background-color: rgba(0, 0, 0, 0.1); /* WF指定 */
+    color: rgba(0, 0, 0, 0.75); /* WF指定 */
     border-radius: 4px; /* WF指定 */
     font-family: 'Roboto', sans-serif; /* WF指定 */
     font-size: 14px; /* WF指定 */
@@ -89,9 +121,9 @@
 
 .file-name-display {
     font-family: 'Roboto', sans-serif; /* WF指定 */
-    font-size: 12px; /* WF指定: ラベル等と同じサイズ */
-    color: rgba(0, 0, 0, 0.87); /* WF指定: メインテキストと同じ黒 */
-    margin-top: 8px; /* ボタンとファイル名の間の最低限の余白 */
+    font-size: 12px; /* WF指定 */
+    color: rgba(0, 0, 0, 0.87); /* WF指定 */
+    margin-top: 8px; /* WF指定 */
 }
 
 /* =========================================================
@@ -104,7 +136,13 @@
     color: #FFFFFF; /* WF指定 */
     border-radius: 4px; /* WF指定 */
     font-family: 'Roboto', sans-serif; /* WF指定 */
-    font-size: 18px; /* WF指定 */
-    font-weight: normal; /* WF指定: Regular */
-    border: none; /* 必須構造: ブラウザ標準のボタン枠線を消す */
+    font-size: 18px; /* WF指定: Regular */
+    font-weight: 400; /* WF指定: Regular(400) */
+    border: none;
+    
+    /*文字をボタンの真ん中に配置して、高さを安定させる指定*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0; 
 }
