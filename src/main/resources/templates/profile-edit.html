@@ -44,5 +44,19 @@
     <footer class="footer">
         <p class="footer-text">portfolio site</p>
     </footer>
+
+    <script>
+        let imageInput = document.getElementById('profileImage');
+        let nameDisplay = document.getElementById('fileNameDisplay');
+
+        // 画像が選ばれたときに動く処理
+        imageInput.onchange = function() {
+            // ファイルが1つ以上選ばれていたら
+            if (imageInput.files.length > 0) {
+                // そのファイルの名前を画面に出す
+                nameDisplay.innerText = imageInput.files[0].name;
+            }
+        };
+    </script>
 </body>
 </html>
