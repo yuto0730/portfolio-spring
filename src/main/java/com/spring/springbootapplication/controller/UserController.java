@@ -15,6 +15,10 @@ import jakarta.validation.Valid;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.ServletException;
 
+// 追記：ログインユーザー情報の取得と、ファイル操作のエラー処理に必要
+import java.security.Principal;
+import java.io.IOException;
+
 @Controller
 public class UserController {
 
@@ -50,9 +54,28 @@ public class UserController {
         return "redirect:/login";
     }
 
-    // 【GET】プロフィール編集画面を表示する。
+    // 【GET】プロフィール編集画面を表示する
     @GetMapping("/profile/edit")
     public String showProfileEditPage(ProfileEditForm profileEditForm) {
         return "profile-edit";
+    }
+
+    // 【POST】プロフィール編集を保存する
+    @PostMapping("/profile/edit")
+    public String updateProfile(@Valid ProfileEditForm profileEditForm, BindingResult result, Principal principal) throws IOException {
+        
+        // バリデーションエラーがある場合は編集画面に戻る
+        if (result.hasErrors()) {
+            return "profile-edit";
+        }
+
+        // 現在ログインしているユーザーを特定
+        User user = userService.findUserByEmail(principal.getName());
+
+        // 画像保存とDB更新を実行
+        userService.updateUserProfile(user, profileEditForm);
+
+        // 登録後はTOP画面（/mypage）に遷移する
+        return "redirect:/mypage";
     }
 }

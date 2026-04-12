@@ -5,6 +5,10 @@ import org.springframework.stereotype.Service;
 import com.spring.springbootapplication.entity.User;
 import com.spring.springbootapplication.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder; 
+import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Service
 public class UserService {
@@ -44,5 +48,27 @@ public class UserService {
     public User findUserByEmail(String email) {
         // リポジトリからメールアドレスで検索して、見つかったら返し、なければ null を返す
         return userRepository.findByEmail(email).orElse(null);
+    }
+
+    // プロフィール（自己紹介と画像）を更新するメソッド
+    public void updateUserProfile(User user, com.spring.springbootapplication.form.ProfileEditForm form) throws IOException {
+        //自己紹介文をセット
+        user.setSelfIntroduction(form.getSelfIntroduction());
+
+        // 画像の保存処理
+        MultipartFile file = form.getProfileImage();
+        if (file != null && !file.isEmpty()) {
+            // ファイル名を取得
+            String fileName = file.getOriginalFilename();
+            // 保存先のパスを指定（さっき作ったフォルダ）
+            Path uploadPath = Paths.get("src/main/resources/static/images/profile/");
+            // 実際にファイルを指定した場所に保存する
+            file.transferTo(uploadPath.resolve(fileName));
+            // DBに保存するために、エンティティにファイル名をセットする
+            user.setProfileImageName(fileName);
+        }
+
+        //DBを更新（保存）
+        userRepository.save(user);
     }
 }
