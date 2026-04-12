@@ -22,15 +22,19 @@
         <section class="profile-section">
             <div class="avatar-container">
                 <div class="avatar-image-placeholder">
-                    </div>
-                <p class="profile-user-name" th:text="${username}"></p>
+                    <img th:if="${user.profileImageName}" 
+                         th:src="@{/images/profile/{name}(name=${user.profileImageName})}" 
+                         alt="プロフィール画像" 
+                         class="avatar-image">
+                </div>
+                <p class="profile-user-name" th:text="${user.name}"></p>
             </div>
 
            <div class="intro-container">
                 <h2 class="intro-title">自己紹介</h2>
-                <div class="intro-text-box">
+                <div class="intro-text-box" th:text="${user.selfIntroduction}">
                     </div>
-                <button type="button" class="profile-edit-btn">自己紹介を編集する</button>
+                <a th:href="@{/profile/edit}" class="profile-edit-btn">自己紹介を編集する</a>
             </div>
         </section>
         <div class="chart-section">
@@ -39,13 +43,11 @@
         </div>
     </main>
 
-   <footer class="footer">
-        <div class="footer-container">
-            <p>
-                portfolio site
-                <span class="login-name" th:text="${username}"></span>
-            </p>
-        </div>
+    <footer class="footer">
+        <p class="footer-text">
+            portfolio site
+            <span class="login-name" th:text="${user.name}"></span>
+        </p>
     </footer>
 </body>
 </html>

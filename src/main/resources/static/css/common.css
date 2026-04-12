@@ -32,6 +32,8 @@ body {
     height: 100%;
     padding: 0 40px;           /*指定*/
     box-sizing: border-box;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 .header-logo {
@@ -40,6 +42,7 @@ body {
     font-size: 36px;                   /*指定*/
     font-weight: 700;                  /*指定*/
     font-style: normal;
+    margin: 0;
 }
 
 /* =========================================================
@@ -94,9 +97,12 @@ main {
     height: 40px;              /*指定*/
     text-align: center;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.footer-container p {
+.footer-text {
     color: #ffffff;
     margin: 0;
     line-height: 40px;

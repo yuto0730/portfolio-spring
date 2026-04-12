@@ -27,4 +27,14 @@ public class User {
     @NotBlank(message = "パスワードは必ず入力してください")
     @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\d).{8,}$", message = "英数字8文字以上で入力してください")
     private String password;
+
+    // 自己紹介文(50文字以上200文字以下)
+    // 新規登録を邪魔しないよう、ここでの「50文字以上」のチェックを外す
+    @Size(max = 200, message = "自己紹介は200文字以下で入力してください")
+    @Column(name = "self_introduction", length = 200)
+    private String selfIntroduction;
+
+    // プロフィール画像（ファイル名を保存）
+    @Column(name = "profile_image_name")
+    private String profileImageName;
 }

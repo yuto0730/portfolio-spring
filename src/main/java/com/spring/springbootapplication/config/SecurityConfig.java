@@ -24,19 +24,19 @@ public class SecurityConfig {
         return http
             //  誰でも見れるページと、ログインが必要なページを分ける
             .authorizeHttpRequests(auth -> auth
-                // 登録・ログイン画面・CSSは、ログイン前でもアクセスを許可する
-                .requestMatchers("/signup", "/login", "/css/**","/logout-callback").permitAll() 
+                // 以下の指定のページはログイン前でもアクセスを許可する
+                .requestMatchers( "/signup", "/login", "/css/**", "/logout-callback").permitAll() 
                 // それ以外のページ（マイページなど）は、ログインしていないと弾く
                 .anyRequest().authenticated() 
             )
             // ログイン機能の設定
             .formLogin(login -> login
                 .loginPage("/login")         // ログイン画面login.htmlを使う
-                .defaultSuccessUrl("/mypage") // ログインに成功したら/mypageへ飛ばす
+                .defaultSuccessUrl("/mypage", true) // ログインに成功したら/mypageへ飛ばす
                 .failureUrl("/login")
                 .permitAll()                 // ログイン画面自体は全員に公開する
             )
-            // セキュリティ設定の微調整
+            // セキュリティ設定の調整
             // POST送信（データの保存）を許可するためにCSRF対策を無効にする
             .csrf(AbstractHttpConfigurer::disable)
             // ログアウト機能の設定
