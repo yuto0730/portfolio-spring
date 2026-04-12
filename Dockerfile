@@ -9,4 +9,4 @@ RUN ./gradlew build -x test
 
 EXPOSE 8080
 
-CMD ["./gradlew", "bootRun"]
+CMD ["java", "-jar", "build/libs/spring-0.0.1-SNAPSHOT.jar"]
