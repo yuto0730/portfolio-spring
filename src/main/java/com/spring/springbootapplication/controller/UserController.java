@@ -14,10 +14,9 @@ import com.spring.springbootapplication.service.UserService;
 import jakarta.validation.Valid;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.ServletException;
-
-// 追記：ログインユーザー情報の取得と、ファイル操作のエラー処理に必要
 import java.security.Principal;
 import java.io.IOException;
+import java.util.Base64; 
 
 @Controller
 public class UserController {
@@ -87,6 +86,12 @@ public class UserController {
         
         // 2. 取得したユーザー情報を「user」という名前でHTMLに渡す
         model.addAttribute("user", user);
+
+        // 追記：DBのバイナリ画像をBase64形式に変換してHTMLに渡す
+        if (user.getProfileImage() != null) {
+            String base64Image = Base64.getEncoder().encodeToString(user.getProfileImage());
+            model.addAttribute("userImage", "data:image/png;base64," + base64Image);
+        }
         
         return "mypage";
     }

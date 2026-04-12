@@ -35,6 +35,13 @@ public class User {
     private String selfIntroduction;
 
     // プロフィール画像（ファイル名を保存）
-    @Column(name = "profile_image_name")
-    private String profileImageName;
+    // Renderではファイルが消えるためコメントアウト
+    // @Column(name = "profile_image_name")
+    // private String profileImageName;
+
+    // プロフィール画像（画像データそのものをDBに保存）
+    // PostgreSQLのbytea型を指定することで、画像バイナリを直接保存できるようにする
+    @Lob
+    @Column(name = "profile_image", columnDefinition = "bytea")
+    private byte[] profileImage;
 }
