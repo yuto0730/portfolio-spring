@@ -78,4 +78,16 @@ public class UserController {
         // 登録後はTOP画面（/mypage）に遷移する
         return "redirect:/mypage";
     }
+
+    // 【GET】マイページを表示する
+    @GetMapping("/mypage")
+    public String showMyPage(Principal principal, org.springframework.ui.Model model) {
+        // 1. 現在ログインしているユーザーの情報をDBから取得する
+        User user = userService.findUserByEmail(principal.getName());
+        
+        // 2. 取得したユーザー情報を「user」という名前でHTMLに渡す
+        model.addAttribute("user", user);
+        
+        return "mypage";
+    }
 }
