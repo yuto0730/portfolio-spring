@@ -22,8 +22,8 @@
         <section class="profile-section">
             <div class="avatar-container">
                 <div class="avatar-image-placeholder">
-                    <img th:if="${user.profileImageName}" 
-                         th:src="@{/images/profile/{name}(name=${user.profileImageName})}" 
+                    <img th:if="${userImage}" 
+                         th:src="${userImage}" 
                          alt="プロフィール画像" 
                          class="avatar-image">
                 </div>

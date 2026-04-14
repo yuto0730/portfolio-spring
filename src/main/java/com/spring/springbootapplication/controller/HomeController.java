@@ -13,7 +13,7 @@ public class HomeController {
         return "index"; 
     }
 
-    // ログイン画面の表示とフラッシュメッセージの処理 
+  // ログイン画面の表示とフラッシュメッセージの処理 
     @GetMapping("/login")
     public String login(HttpSession session, Model model) {
         Object error = session.getAttribute("SPRING_SECURITY_LAST_EXCEPTION");

@@ -12,12 +12,9 @@ import com.spring.springbootapplication.form.ProfileEditForm;
 import com.spring.springbootapplication.service.UserService;
 
 import jakarta.validation.Valid;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.ServletException;
-
-// 追記：ログインユーザー情報の取得と、ファイル操作のエラー処理に必要
 import java.security.Principal;
 import java.io.IOException;
+import java.util.Base64; 
 
 @Controller
 public class UserController {
@@ -33,17 +30,15 @@ public class UserController {
 
     // 【POST】登録ボタンが押された時の処理
     @PostMapping("/signup")
-    public String register(@Valid User user, BindingResult result, HttpServletRequest request) {
+    public String register(@Valid User user, BindingResult result) {
         if (result.hasErrors()) {
             return "signup";
         }
-        String rawPassword = user.getPassword();
+        
+        // ユーザー情報を保存する（パスワード暗号化はUserService側で実施）
         userService.registerUser(user);
-        try {
-            request.login(user.getEmail(), rawPassword);
-        } catch (ServletException e) {
-            return "redirect:/login";
-        }
+        
+        // 登録後は、ログイン画面にリダイレクトさせる
         return "redirect:/login";
     }
 
@@ -82,11 +77,17 @@ public class UserController {
     // 【GET】マイページを表示する
     @GetMapping("/mypage")
     public String showMyPage(Principal principal, org.springframework.ui.Model model) {
-        // 1. 現在ログインしているユーザーの情報をDBから取得する
+        // 現在ログインしているユーザーの情報をDBから取得する
         User user = userService.findUserByEmail(principal.getName());
         
-        // 2. 取得したユーザー情報を「user」という名前でHTMLに渡す
+        // 取得したユーザー情報を「user」という名前でHTMLに渡す
         model.addAttribute("user", user);
+
+        // DBの画像をBase64形式に変換してHTMLに渡す
+        if (user.getProfileImage() != null) {
+            String base64Image = Base64.getEncoder().encodeToString(user.getProfileImage());
+            model.addAttribute("userImage", "data:image/png;base64," + base64Image);
+        }
         
         return "mypage";
     }

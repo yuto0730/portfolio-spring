@@ -7,8 +7,6 @@ import com.spring.springbootapplication.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder; 
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 @Service
 public class UserService {
@@ -58,14 +56,8 @@ public class UserService {
         // 画像の保存処理
         MultipartFile file = form.getProfileImage();
         if (file != null && !file.isEmpty()) {
-            // ファイル名を取得
-            String fileName = file.getOriginalFilename();
-            // 保存先のパスを指定（さっき作ったフォルダ）
-            Path uploadPath = Paths.get("src/main/resources/static/images/profile/");
-            // 実際にファイルを指定した場所に保存する
-            file.transferTo(uploadPath.resolve(fileName));
-            // DBに保存するために、エンティティにファイル名をセットする
-            user.setProfileImageName(fileName);
+            // DBにバイトデータを直接保存
+            user.setProfileImage(file.getBytes());
         }
 
         //DBを更新（保存）
