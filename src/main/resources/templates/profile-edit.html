@@ -10,7 +10,9 @@
     <header class="header">
         <div class="header-container">
             <h1 class="header-logo">My Portfolio</h1>
-            <button class="logout-header-btn">ログアウト</button>
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="logout-header-btn">ログアウト</button>
+            </form>
         </div>
     </header>
 
@@ -30,11 +32,15 @@
 
             <div class="form-group">
                 <label class="form-label">アバター画像</label>
+
                 <label for="profileImage" class="file-upload-btn">
-                    画像ファイルを添付する
+                    画像ファイルを変更する
                     <input type="file" id="profileImage" name="profileImage" class="file-input" accept="image/*">
                 </label>
-                <span id="fileNameDisplay" class="file-name-display"></span>
+                
+                <span id="fileNameDisplay" class="file-name-display" th:text="*{profileImageName}"></span>
+                
+                <input type="hidden" th:field="*{profileImageName}">
             </div>
 
             <button type="submit" class="submit-btn">自己紹介を確定する</button>
@@ -49,11 +55,10 @@
         let imageInput = document.getElementById('profileImage');
         let nameDisplay = document.getElementById('fileNameDisplay');
 
-        // 画像が選ばれたときに動く処理
+        // 画像が新しく選ばれたときに動く処理
         imageInput.onchange = function() {
-            // ファイルが1つ以上選ばれていたら
             if (imageInput.files.length > 0) {
-                // そのファイルの名前を画面に出す
+                // 選ばれた新しいファイル名に書き換える
                 nameDisplay.innerText = imageInput.files[0].name;
             }
         };

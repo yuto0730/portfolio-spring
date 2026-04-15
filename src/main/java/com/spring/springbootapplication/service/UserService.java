@@ -35,7 +35,7 @@ public class UserService {
             throw new RuntimeException("このメールアドレスは既に登録されています");
         }
 
-        //パスワードを暗号（ハッシュ形式）に変える
+        // パスワードを暗号（ハッシュ形式）に変える
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
 
@@ -50,7 +50,7 @@ public class UserService {
 
     // プロフィール（自己紹介と画像）を更新するメソッド
     public void updateUserProfile(User user, com.spring.springbootapplication.form.ProfileEditForm form) throws IOException {
-        //自己紹介文をセット
+        // 自己紹介文をセット
         user.setSelfIntroduction(form.getSelfIntroduction());
 
         // 画像の保存処理
@@ -58,9 +58,12 @@ public class UserService {
         if (file != null && !file.isEmpty()) {
             // DBにバイトデータを直接保存
             user.setProfileImage(file.getBytes());
+            
+            // ファイル名もDBに保存する
+            user.setProfileImageName(file.getOriginalFilename());
         }
 
-        //DBを更新（保存）
+        // DBを更新（保存）
         userRepository.save(user);
     }
 }
