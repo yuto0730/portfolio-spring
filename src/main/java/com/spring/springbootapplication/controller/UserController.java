@@ -2,6 +2,7 @@ package com.spring.springbootapplication.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +23,7 @@ public class UserController {
     @Autowired
     private UserService userService; 
 
-    // 【GET】登録画面を表示する。
+    // 【GET】登録画面を表示する
     @GetMapping("/signup")
     public String showSignupForm(User user) {
         return "signup";
@@ -34,11 +35,7 @@ public class UserController {
         if (result.hasErrors()) {
             return "signup";
         }
-        
-        // ユーザー情報を保存する（パスワード暗号化はUserService側で実施）
         userService.registerUser(user);
-        
-        // 登録後は、ログイン画面にリダイレクトさせる
         return "redirect:/login";
     }
 
@@ -51,7 +48,17 @@ public class UserController {
 
     // 【GET】プロフィール編集画面を表示する
     @GetMapping("/profile/edit")
-    public String showProfileEditPage(ProfileEditForm profileEditForm) {
+    public String showProfileEditPage(Principal principal, Model model) {
+        // 現在ログインしているユーザーの情報をDBから取得
+        User user = userService.findUserByEmail(principal.getName());
+
+        // フォームクラスに、現在のDBの値をセットする（初期値の表示用）
+        ProfileEditForm profileEditForm = new ProfileEditForm();
+        profileEditForm.setSelfIntroduction(user.getSelfIntroduction());
+        profileEditForm.setProfileImageName(user.getProfileImageName()); 
+
+        // フォームをModelに追加して画面に渡す
+        model.addAttribute("profileEditForm", profileEditForm);
         return "profile-edit";
     }
 
@@ -67,23 +74,20 @@ public class UserController {
         // 現在ログインしているユーザーを特定
         User user = userService.findUserByEmail(principal.getName());
 
-        // 画像保存とDB更新を実行
+        // 保存処理（Service側でファイル名とバイナリデータをDBに保存）
         userService.updateUserProfile(user, profileEditForm);
 
-        // 登録後はTOP画面（/mypage）に遷移する
+        // 保存後はマイページに遷移
         return "redirect:/mypage";
     }
 
     // 【GET】マイページを表示する
     @GetMapping("/mypage")
-    public String showMyPage(Principal principal, org.springframework.ui.Model model) {
-        // 現在ログインしているユーザーの情報をDBから取得する
+    public String showMyPage(Principal principal, Model model) {
         User user = userService.findUserByEmail(principal.getName());
-        
-        // 取得したユーザー情報を「user」という名前でHTMLに渡す
         model.addAttribute("user", user);
 
-        // DBの画像をBase64形式に変換してHTMLに渡す
+        // マイページではプロフィール画像を表示する
         if (user.getProfileImage() != null) {
             String base64Image = Base64.getEncoder().encodeToString(user.getProfileImage());
             model.addAttribute("userImage", "data:image/png;base64," + base64Image);

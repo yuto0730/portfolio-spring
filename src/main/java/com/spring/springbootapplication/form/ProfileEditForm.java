@@ -11,6 +11,9 @@ public class ProfileEditForm {
     @Size(min = 50, max = 200, message = "自己紹介は50文字以上200文字以下で入力してください")
     private String selfIntroduction = "";
 
-    // 画像ファイルを受け取るための型
+    // 画像ファイルを受け取るための型（新しくアップロードする用）
     private MultipartFile profileImage;
+
+    // DBに保存されているファイル名を画面に表示するための項目
+    private String profileImageName;
 }
