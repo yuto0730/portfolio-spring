@@ -10,7 +10,10 @@
 <body>
     <header class="header">
         <div class="header-container">
-            <div class="header-logo">My Portfolio</div>
+            <h1 class="header-logo">My Portfolio</h1>
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="logout-header-btn">ログアウト</button>
+            </form>
         </div>
     </header>
 

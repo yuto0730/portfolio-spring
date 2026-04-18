@@ -22,10 +22,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-            //  誰でも見れるページと、ログインが必要なページを分ける
+            // 誰でも見れるページと、ログインが必要なページを分ける
             .authorizeHttpRequests(auth -> auth
                 // 以下の指定のページはログイン前でもアクセスを許可する
-                .requestMatchers( "/signup", "/login", "/css/**", "/logout-callback").permitAll() 
+                .requestMatchers("/signup", "/login", "/css/**", "/logout-callback", "/skill/edit").permitAll() 
                 // それ以外のページ（マイページなど）は、ログインしていないと弾く
                 .anyRequest().authenticated() 
             )
