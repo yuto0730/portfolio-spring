@@ -1,72 +1,38 @@
-<!DOCTYPE html>
-<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <meta charset="UTF-8">
-    <title>学習項目編集 | My Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/css/common.css}">
-    <link rel="stylesheet" th:href="@{/css/skill-edit.css}">
-</head>
-<body>
-    <header class="header">
-        <div class="header-container">
-            <h1 class="header-logo">My Portfolio</h1>
-            <form th:action="@{/logout}" method="post">
-                <button type="submit" class="logout-header-btn">ログアウト</button>
-            </form>
-        </div>
-    </header>
-
-    <main class="skill-edit-main">
-        
-        <div class="skill-edit-wrapper">
-
-            <div class="pull-down-container">
-                <select class="month-pull-down">
-                    <option value="2026-04">9月</option>
-                    <option value="2026-03">8月</option>
-                    <option value="2026-02">7月</option>
-                </select>
+<tbody>
+    <tr>
+        <td><span class="item-name">Ruby</span></td>
+        <td>
+            <div class="input-container">
+                <input type="number" value="40" class="input-time">
             </div>
-
-            <section class="category-section">
-                <div class="category-header">
-                    <h2 class="category-title">バックエンド</h2>
-                    <button type="button" class="add-item-btn">項目を追加する</button>
-                </div>
-                <div class="category-card">
-                    </div>
-            </section>
-
-            <section class="category-section">
-                <div class="category-header">
-                    <h2 class="category-title">フロントエンド</h2>
-                    <button type="button" class="add-item-btn">項目を追加する</button>
-                </div>
-                <div class="category-card">
-                    </div>
-            </section>
-
-            <section class="category-section">
-                <div class="category-header">
-                    <h2 class="category-title">インフラ</h2>
-                    <button type="button" class="add-item-btn">項目を追加する</button>
-                </div>
-                <div class="category-card">
-                    </div>
-            </section>
-
-        </div>
-
-    </main>
-
-    <footer class="footer">
-        <div class="footer-container">
-            <p class="footer-text">
-                portfolio site
-                <span class="login-name" sec:authentication="name"></span>
-            </p>
-        </div>
-    </footer>
-</body>
-</html>
+        </td>
+        <td class="button-group">
+            <button class="btn-save">学習時間を保存する</button>
+            <button class="btn-delete">削除する</button>
+        </td>
+    </tr>
+    <tr>
+        <td><span class="item-name">Rails</span></td>
+        <td>
+            <div class="input-container">
+                <input type="number" value="40" class="input-time">
+            </div>
+        </td>
+        <td class="button-group">
+            <button class="btn-save">学習時間を保存する</button>
+            <button class="btn-delete">削除する</button>
+        </td>
+    </tr>
+    <tr>
+        <td><span class="item-name">MySQL</span></td>
+        <td>
+            <div class="input-container">
+                <input type="number" value="40" class="input-time">
+            </div>
+        </td>
+        <td class="button-group">
+            <button class="btn-save">学習時間を保存する</button>
+            <button class="btn-delete">削除する</button>
+        </td>
+    </tr>
+</tbody>
