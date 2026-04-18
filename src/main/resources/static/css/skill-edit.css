@@ -81,15 +81,15 @@
    【学習項目編集画面】カテゴリーカード（白い枠）
 ========================================================= */
 .category-section {
-    margin-bottom: 80px; /* WF指定: カード同士の間隔 */
+    margin-bottom: 80px; /* WF指定: カード同士の間隔80px */
 }
 
 .category-card {
     width: 960px; /* WF指定 */
-    min-height: 436px; /* WF指定 */
+    min-height: 436px; /* WF指定*/
     background-color: #FFFFFF; /* WF指定 */
     border: 1px solid rgba(0, 0, 0, 0.5); /* WF指定: ボーダー1px・黒50% */
-    border-radius: 8px; /* WF指定 */
-    padding: 40px; /* WF指定 */
+    border-radius: 8px; /* WF指定*/
+    padding: 40px; /* WF指定*/
     box-sizing: border-box;
 }
