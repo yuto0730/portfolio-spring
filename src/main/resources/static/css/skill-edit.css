@@ -1,0 +1,25 @@
+/* =========================================================
+   【学習項目編集画面】大枠
+========================================================= */
+.skill-edit-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1440px; /* WF指定 */
+    width: 100%;
+    margin: 0 auto;
+    background-color: #FFFFFF; /* WF指定 */
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   【学習項目編集画面】コンテンツエリア（wrapper）
+========================================================= */
+.skill-edit-wrapper {
+    width: 960px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px; /* WF指定*/
+    padding-bottom: 40px; /* WF指定*/
+    box-sizing: border-box;
+}

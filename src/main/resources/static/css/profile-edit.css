@@ -18,7 +18,6 @@
     font-family: 'Roboto', sans-serif; /* WF指定 */
     font-size: 36px; /* WF指定 */
     font-weight: 400; /* WF指定: Regular (400) */
-    /* ↓【修正】黒の75%に変更しました↓ */
     color: rgba(0, 0, 0, 0.75); /* WF指定: 黒の75% */
     margin-top: 80px; /* WF指定: ヘッダーからの距離 */
     margin-bottom: 80px; /* WF指定: フォームまでの距離 */
