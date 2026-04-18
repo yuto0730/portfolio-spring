@@ -16,10 +16,31 @@
    【学習項目編集画面】コンテンツエリア（wrapper）
 ========================================================= */
 .skill-edit-wrapper {
-    width: 960px;
+    width: 960px; 
     display: flex;
     flex-direction: column;
     padding-top: 40px; /* WF指定*/
     padding-bottom: 40px; /* WF指定*/
     box-sizing: border-box;
+}
+
+/* =========================================================
+   【学習項目編集画面】月選択プルダウン
+========================================================= */
+.pull-down-container {
+    width: 100%; /* WF指定 */
+    margin-bottom: 40px; /* WF指定: カードとの間隔 */
+    display: flex;
+    justify-content: flex-start; /* 左寄せ */
+}
+
+.month-pull-down {
+    width: 100px; /* WF指定 */
+    height: 40px; /* WF指定 */
+    padding: 0 10px; /* WF指定 */
+    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-size: 16px; /* WF指定 */
+    border: 1px solid rgba(0, 0, 0, 0.12); /* WF指定 */
+    border-radius: 4px; /* WF指定 */
+    background-color: #FFFFFF; /* WF指定 */
 }
