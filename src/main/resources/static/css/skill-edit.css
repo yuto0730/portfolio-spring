@@ -1,76 +1,58 @@
 /* =========================================================
-   【学習項目編集画面】大枠
+   【学習項目編集画面】全体レイアウト
 ========================================================= */
-.skill-edit-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 1440px; /* WF指定 */
-    width: 100%;
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 960px; /* WF指定 */
     margin: 0 auto;
-    background-color: #FFFFFF; /* WF指定 */
+    padding-top: 40px; /* WF指定 */
+    padding-bottom: 40px; /* WF指定 */
     box-sizing: border-box;
 }
 
 /* =========================================================
-   【学習項目編集画面】コンテンツエリア（wrapper）
+   【学習項目編集画面】カテゴリーセクション
 ========================================================= */
-.skill-edit-wrapper {
-    width: 960px; 
-    display: flex;
-    flex-direction: column;
-    padding-top: 40px; /* WF指定*/
-    padding-bottom: 40px; /* WF指定*/
-    box-sizing: border-box;
+.category {
+    margin-bottom: 80px; /* WF指定: カード同士の間隔 */
 }
 
-/* =========================================================
-   【学習項目編集画面】月選択プルダウン
-========================================================= */
-.pull-down-container {
-    width: 100%; /* WF指定 */
-    margin-bottom: 40px; /* WF指定: カードとの間隔 */
-    display: flex;
-    justify-content: flex-start; /* 左寄せ */
-}
-
-.month-pull-down {
-    width: 100px; /* WF指定 */
-    height: 40px; /* WF指定 */
-    padding: 0 10px; /* WF指定 */
-    font-family: 'Roboto', sans-serif; /* WF指定 */
-    font-size: 16px; /* WF指定 */
-    border: 1px solid rgba(0, 0, 0, 0.12); /* WF指定 */
-    border-radius: 4px; /* WF指定 */
-    background-color: #FFFFFF; /* WF指定 */
-}
-
-/* =========================================================
-   【学習項目編集画面】カテゴリーヘッダー
-========================================================= */
-.category-header {
+.title-container {
     display: flex;
     justify-content: space-between; /* WF指定: 両端寄せ */
-    align-items: center;
-    margin-bottom: 12px; /* WF指定: カードとの距離 */
+    align-items: flex-start;
+    margin-bottom: 32px; /* WF指定: カードとの間隔 */
 }
 
 .category-title {
     font-family: 'Roboto', sans-serif; /* WF指定 */
     font-size: 24px; /* WF指定 */
     font-weight: 700; /* WF指定 */
-    color: rgba(0, 0, 0, 0.87); /* WF指定 */
+    color: #000000; /* WF指定 */
     margin: 0;
+    line-height: 100%; /* WF指定 */
 }
 
-.add-item-btn {
-    width: 160px; /* WF指定 */
-    height: 36px; /* WF指定 */
+.title-line {
+    width: 240px; /* WF指定 */
+    height: 0px; 
+    border: 2px solid rgba(0, 0, 0, 0.5); /* WF指定: 黒50% */
+    margin-top: 4px;
+}
+
+.btn-add {
+    width: 178px; /* WF指定 */
+    height: 48px; /* WF指定 */
     background-color: #1B5678; /* WF指定 */
     color: #FFFFFF; /* WF指定 */
     border-radius: 4px; /* WF指定 */
     font-family: 'Roboto', sans-serif; /* WF指定 */
     font-size: 14px; /* WF指定 */
+    font-weight: 400; /* WF指定 */
     border: none;
     display: flex;
     justify-content: center;
@@ -78,18 +60,101 @@
 }
 
 /* =========================================================
-   【学習項目編集画面】カテゴリーカード（白い枠）
+   【学習項目編集画面】カード・テーブル
 ========================================================= */
-.category-section {
-    margin-bottom: 80px; /* WF指定: カード同士の間隔80px */
+.card {
+    width: 880px; /* WF指定 */
+    background-color: #FFFFFF; /* WF指定 */
+    border-radius: 4px; /* WF指定 */
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.12), 
+                0px 2px 2px 0px rgba(0, 0, 0, 0.14); /* WF指定: Shadow/2 */
+    margin: 0 auto;
+    overflow: hidden;
 }
 
-.category-card {
-    width: 960px; /* WF指定 */
-    min-height: 436px; /* WF指定*/
+.skill-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.skill-table thead {
+    height: 57px; /* WF指定 */
+}
+
+.skill-table th {
+    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-size: 14px; /* WF指定 */
+    font-weight: 500; /* WF指定 */
+    color: rgba(0, 0, 0, 0.87); /* WF指定: 黒87% */
+    text-align: left;
+    padding-left: 40px; /* WF指定 */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.col-name { width: 240px; /* WF指定 */ }
+.col-time { width: 240px; /* WF指定 */ }
+
+.skill-table tbody tr {
+    height: 73px; /* WF指定 */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.skill-table td {
+    padding-left: 40px; /* WF指定 */
+}
+
+.item-name {
+    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-size: 14px; /* WF指定 */
+    font-weight: 400; /* WF指定 */
+    color: #000000; /* WF指定 */
+}
+
+/* =========================================================
+   【学習項目編集画面】入力要素・操作ボタン
+========================================================= */
+.input-time {
+    width: 160px; /* WF指定 */
+    height: 40px; /* WF指定 */
+    border: 1px solid rgba(0, 0, 0, 0.23);
+    border-radius: 4px; /* WF指定 */
+    padding: 0 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+.button-group {
+    display: flex;
+    gap: 32px; /* WF指定: コンテンツ間の間隔 */
+    align-items: center;
+}
+
+.btn-save {
+    width: 158px; /* WF指定 */
+    height: 32px; /* WF指定 */
     background-color: #FFFFFF; /* WF指定 */
-    border: 1px solid rgba(0, 0, 0, 0.5); /* WF指定: ボーダー1px・黒50% */
-    border-radius: 8px; /* WF指定*/
-    padding: 40px; /* WF指定*/
-    box-sizing: border-box;
+    color: #1B5678; /* WF指定 */
+    border: 1px solid #1B5678; /* WF指定 */
+    border-radius: 4px; /* WF指定 */
+    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-size: 14px; /* WF指定 */
+    font-weight: 400; /* WF指定 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-delete {
+    width: 88px; /* WF指定 */
+    height: 32px; /* WF指定 */
+    background-color: #EE6969; /* WF指定 */
+    color: #FFFFFF; /* WF指定 */
+    border: none;
+    border-radius: 4px; /* WF指定 */
+    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-size: 14px; /* WF指定 */
+    font-weight: 400; /* WF指定 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
