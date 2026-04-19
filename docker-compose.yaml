@@ -10,7 +10,6 @@ services:
     tty: true
     volumes:
       - ./:/app
-    # ↓ これを追加：application-dev.propertiesを読み込ませる
     environment:
       - SPRING_PROFILES_ACTIVE=dev
     depends_on:
