@@ -25,7 +25,7 @@ public class SecurityConfig {
             // 誰でも見れるページと、ログインが必要なページを分ける
             .authorizeHttpRequests(auth -> auth
                 // 以下の指定のページはログイン前でもアクセスを許可する
-                .requestMatchers("/signup", "/login", "/css/**", "/logout-callback", "/skill/edit").permitAll() 
+                .requestMatchers("/error", "/signup", "/login", "/css/**", "/logout-callback", "/skill/edit").permitAll() 
                 // それ以外のページ（マイページなど）は、ログインしていないと弾く
                 .anyRequest().authenticated() 
             )
