@@ -15,73 +15,51 @@
         </div>
     </header>
 
-    <main class="skill-edit-main">
-        <div class="skill-edit-wrapper">
+    <main class="container">
+        
+        <div class="pull-down-container">
+            <select class="month-pull-down">
+                <option value="9">9月</option>
+            </select>
+        </div>
+
+        <section class="category" th:each="category : ${categories}">
             
-            <div class="pull-down-container">
-                <select class="month-pull-down">
-                    <option value="9">9月</option>
-                    <option value="8">8月</option>
-                    <option value="7">7月</option>
-                </select>
+            <div class="title-container">
+                <div class="title-group">
+                    <h2 class="category-title" th:text="${category.name}">バックエンド</h2>
+                    <div class="title-line"></div>
+                </div>
+                <button class="btn-add">項目を追加する</button>
             </div>
 
-            <section class="category-section" th:each="category : ${categories}">
-                
-                <div class="category-header">
-                    <div class="title-group">
-                        <h2 class="category-title" th:text="${category.name}">バックエンド</h2>
-                        <div class="title-line"></div>
-                    </div>
-                    <button class="add-item-btn">項目を追加する</button>
-                </div>
+            <div class="card">
+                <table class="skill-table">
+                    <thead>
+                        <tr>
+                            <th class="col-name">項目名</th>
+                            <th class="col-time">学習時間</th>
+                            <th class="col-actions"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="item-name">Ruby</span></td>
+                            <td>
+                                <input type="number" value="40" class="input-time">
+                            </td>
+                            <td>
+                                <div class="button-group">
+                                    <button class="btn-save">学習時間を保存する</button>
+                                    <button class="btn-delete">削除する</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <div class="category-card">
-                    <table class="skill-table">
-                        <thead>
-                            <tr>
-                                <th class="col-name">項目名</th>
-                                <th class="col-time">学習時間</th>
-                                <th class="col-actions"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><span class="item-name">Ruby</span></td>
-                                <td>
-                                    <input type="number" value="40" class="input-time">
-                                </td>
-                                <td class="button-group">
-                                    <button class="btn-save">学習時間を保存する</button>
-                                    <button class="btn-delete">削除する</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span class="item-name">Rails</span></td>
-                                <td>
-                                    <input type="number" value="40" class="input-time">
-                                </td>
-                                <td class="button-group">
-                                    <button class="btn-save">学習時間を保存する</button>
-                                    <button class="btn-delete">削除する</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span class="item-name">MySQL</span></td>
-                                <td>
-                                    <input type="number" value="40" class="input-time">
-                                </td>
-                                <td class="button-group">
-                                    <button class="btn-save">学習時間を保存する</button>
-                                    <button class="btn-delete">削除する</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </section>
-        </div>
+        </section>
     </main>
 
     <footer class="footer">
