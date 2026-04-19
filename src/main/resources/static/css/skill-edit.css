@@ -9,7 +9,7 @@ body {
 .container {
     width: 960px; /* WF指定 */
     margin: 0 auto;
-    padding-top: 40px; /* WF指定 */
+    padding-top: 120px; /* WF指定 */
     padding-bottom: 40px; /* WF指定 */
     box-sizing: border-box;
 }
@@ -33,23 +33,32 @@ body {
     border: 1px solid #DDDDDD; /* WF指定 */
     border-radius: 4px; /* WF指定 */
     background-color: #FFFFFF;
-    cursor: pointer;
 }
 
 /* =========================================================
    【学習項目編集画面】カテゴリーセクション
 ========================================================= */
+.wrapper {
+    width: 960px; /* WF指定 */
+    height: 1512px; /* WF指定 */
+    overflow-y: auto;
+}
+
 .category {
     width: 960px; /* WF指定 */
+    height: 436px; /* WF指定 */
     padding: 40px; /* WF指定 */
     box-sizing: border-box;
     margin-bottom: 80px; /* WF指定 */
+    border: 1px solid rgba(0, 0, 0, 0.5); /* WF指定 */
+    border-radius: 8px; /* WF指定 */
 }
 
 .title-container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    margin-bottom: 32px; /* WF指定 */
 }
 
 .category-title {
@@ -81,5 +90,40 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
 }
+
+/* =========================================================
+   【学習項目編集画面】カード・テーブルヘッダー
+========================================================= */
+.card {
+    width: 880px; /* WF指定 */
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.12), 
+                0px 2px 2px 0px rgba(0, 0, 0, 0.14); /* WF指定 */
+    overflow: hidden;
+}
+
+.skill-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.skill-table thead {
+    height: 57px; /* WF指定 */
+}
+
+.skill-table th {
+    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-size: 14px; /* WF指定 */
+    font-weight: 500; /* WF指定 */
+    color: rgba(0, 0, 0, 0.87); /* WF指定 */
+    text-align: left;
+    padding-left: 40px; /* WF指定 */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12); /* WF指定 */
+}
+
+.col-name { width: 240px; /* WF指定 */ }
+.col-time { width: 240px; /* WF指定 */ }
+.col-action-save { width: 200px; /* WF指定 */ }
+.col-action-delete { width: 200px; /* WF指定 */ }

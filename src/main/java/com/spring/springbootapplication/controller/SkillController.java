@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.spring.springbootapplication.repository.CategoryRepository; 
 import com.spring.springbootapplication.entity.Category; 
 import java.util.List;
+import java.time.LocalDate; 
+import java.util.ArrayList; 
 
 @Controller
 public class SkillController {
 
-    // データベースからデータを取得するための「リポジトリ」を準備します
+    // データベースからデータを取得するための「リポジトリ」を準備
     @Autowired
     private CategoryRepository categoryRepository;
 
@@ -24,7 +26,14 @@ public class SkillController {
         
         // 取得したカテゴリー一覧をHTMLに渡す
         model.addAttribute("categories", categories);
-        
+
+        //現在の月から過去3ヶ月分のリストを作成
+        List<LocalDate> months = new ArrayList<>();
+        LocalDate now = LocalDate.now();
+        for (int i = 0; i < 3; i++) {
+            months.add(now.minusMonths(i));
+        }
+        model.addAttribute("months", months);
         return "skill-edit";
     }
 }
