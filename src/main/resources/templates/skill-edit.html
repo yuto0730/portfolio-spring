@@ -15,7 +15,7 @@
         </div>
     </header>
 
-    <main class="container">
+    <div class="main-wrapper">
         
         <div class="pull-down-container">
             <select class="month-pull-down" onchange="location.href='/skill/edit?month=' + this.value">
@@ -27,7 +27,7 @@
             </select>
         </div>
 
-        <div class="wrapper">
+        <div class="category-list">
             <section class="category" th:each="category : ${categories}">
                 
                 <div class="title-container">
@@ -55,7 +55,7 @@
 
             </section>
         </div>
-    </main>
+    </div>
 
     <footer class="footer">
         <p class="footer-text">portfolio site</p>

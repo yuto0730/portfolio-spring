@@ -1,25 +1,23 @@
 /* =========================================================
    【学習項目編集画面】全体レイアウト
 ========================================================= */
-body {
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    width: 960px; /* WF指定 */
-    margin: 0 auto;
+.main-wrapper {
+    width: 100%;
+    min-width: 960px; 
     padding-top: 120px; /* WF指定 */
     padding-bottom: 40px; /* WF指定 */
+    background-color: #FFFFFF; /* WF指定 */
     box-sizing: border-box;
 }
 
 /* =========================================================
-   【学習項目編集画面】1-3. 月選択プルダウン
+   【学習項目編集画面】月選択プルダウン
 ========================================================= */
 .pull-down-container {
-    margin-left: 40px; /* WF指定 */
-    margin-bottom: 40px; /* WF指定 */
+    width: 960px; /* 軸を960pxに固定 */
+    margin: 0 auto 40px; /* 中央寄せ & 下マージン */
+    padding-left: 40px; /* WFの margin-left: 40px 分 */
+    box-sizing: border-box;
 }
 
 .month-pull-down {
@@ -38,20 +36,19 @@ body {
 /* =========================================================
    【学習項目編集画面】カテゴリーセクション
 ========================================================= */
-.wrapper {
-    width: 960px; /* WF指定 */
-    height: 1512px; /* WF指定 */
-    overflow-y: auto;
+.category-list {
+    width: 100%;
 }
 
 .category {
-    width: 960px; /* WF指定 */
+    width: 960px; /* 軸を960pxに固定 */
     height: 436px; /* WF指定 */
     padding: 40px; /* WF指定 */
     box-sizing: border-box;
-    margin-bottom: 80px; /* WF指定 */
+    margin: 0 auto 80px; /* 中央寄せ & 下マージン */
     border: 1px solid rgba(0, 0, 0, 0.5); /* WF指定 */
     border-radius: 8px; /* WF指定 */
+    background-color: #FFFFFF;
 }
 
 .title-container {
@@ -59,6 +56,11 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 32px; /* WF指定 */
+}
+
+.title-group {
+    display: flex;
+    flex-direction: column;
 }
 
 .category-title {
@@ -93,15 +95,16 @@ body {
 }
 
 /* =========================================================
-   【学習項目編集画面】カード・テーブルヘッダー
+   【学習項目編集画面】カード・テーブル（内部スクロール）
 ========================================================= */
 .card {
-    width: 880px; /* WF指定 */
+    width: 880px; /* WF指定: 960px - 40px*2 */
+    height: 276px; /* WF指定: 57px + 73px*3 */
     background-color: #FFFFFF;
-    border-radius: 4px;
+    border-radius: 4px; /* WF指定 */
     box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.12), 
                 0px 2px 2px 0px rgba(0, 0, 0, 0.14); /* WF指定 */
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .skill-table {
@@ -110,10 +113,14 @@ body {
 }
 
 .skill-table thead {
-    height: 57px; /* WF指定 */
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #FFFFFF;
 }
 
 .skill-table th {
+    height: 57px; /* WF指定 */
     font-family: 'Roboto', sans-serif; /* WF指定 */
     font-size: 14px; /* WF指定 */
     font-weight: 500; /* WF指定 */
@@ -121,6 +128,14 @@ body {
     text-align: left;
     padding-left: 40px; /* WF指定 */
     border-bottom: 1px solid rgba(0, 0, 0, 0.12); /* WF指定 */
+    box-sizing: border-box;
+}
+
+.skill-table td {
+    height: 73px; /* WF指定 */
+    padding-left: 40px; /* WF指定 */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12); /* WF指定 */
+    box-sizing: border-box;
 }
 
 .col-name { width: 240px; /* WF指定 */ }
