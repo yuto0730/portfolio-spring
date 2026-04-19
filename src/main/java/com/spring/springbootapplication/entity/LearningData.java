@@ -23,8 +23,8 @@ public class LearningData {
     @Column(name = "category_id")
     private Integer categoryId;
 
-    // 学習項目名
-    @Column(name = "name", length = 50)
+    // 学習項目名：50文字以内
+    @Column(name = "name", length = 50) /* WF指定 */
     private String name;
 
     // 学習時間
