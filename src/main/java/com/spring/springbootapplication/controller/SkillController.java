@@ -2,38 +2,43 @@ package com.spring.springbootapplication.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam; /* WF指定 */
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.spring.springbootapplication.repository.CategoryRepository; 
 import com.spring.springbootapplication.entity.Category; 
 import java.util.List;
-import java.time.LocalDate; 
 import java.util.ArrayList; 
+import java.time.LocalDate; 
 
 @Controller
 public class SkillController {
 
-    // データベースからデータを取得するための「リポジトリ」を準備
     @Autowired
     private CategoryRepository categoryRepository;
 
-    // 【GET】 学習項目編集画面を表示する
     @GetMapping("/skill/edit")
-    public String showSkillEditPage(Model model) {
+    public String showSkillEditPage(
+            @RequestParam(name = "month", required = false) Integer monthParam, 
+            Model model) {
         
-        // データベースからすべてのカテゴリーを取得
-        List<Category> categories = categoryRepository.findAll();
-        
-        // 取得したカテゴリー一覧をHTMLに渡す
-        model.addAttribute("categories", categories);
-
-        //現在の月から過去3ヶ月分のリストを作成
-        List<LocalDate> months = new ArrayList<>();
+        // 表示する月の決定（指定がなければ当月）
         LocalDate now = LocalDate.now();
+        int targetMonthValue = (monthParam != null) ? monthParam : now.getMonthValue();
+        
+        // 月の選択肢リスト作成（今月・先月・先々月）
+        List<LocalDate> months = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             months.add(now.minusMonths(i));
         }
+
+        // カテゴリー一覧取得
+        List<Category> categories = categoryRepository.findAll();
+        
+        model.addAttribute("categories", categories);
         model.addAttribute("months", months);
+        model.addAttribute("selectedMonth", targetMonthValue); // 選択状態を保持するため
+        
         return "skill-edit";
     }
 }

@@ -18,10 +18,11 @@
     <main class="container">
         
         <div class="pull-down-container">
-            <select class="month-pull-down">
+            <select class="month-pull-down" onchange="location.href='/skill/edit?month=' + this.value">
                 <option th:each="month : ${months}" 
                         th:value="${month.getMonthValue()}" 
-                        th:text="${month.getMonthValue() + '月'}">
+                        th:text="${month.getMonthValue() + '月'}"
+                        th:selected="${month.getMonthValue() == selectedMonth}">
                 </option>
             </select>
         </div>
