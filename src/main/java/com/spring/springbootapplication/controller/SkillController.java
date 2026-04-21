@@ -2,11 +2,12 @@ package com.spring.springbootapplication.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam; /* WF指定 */
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.spring.springbootapplication.repository.CategoryRepository; 
 import com.spring.springbootapplication.entity.Category; 
+import com.spring.springbootapplication.form.SkillAddForm; // 追加
 import java.util.List;
 import java.util.ArrayList; 
 import java.time.LocalDate; 
@@ -17,6 +18,9 @@ public class SkillController {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    /**
+     * スキル編集画面（一覧）の表示
+     */
     @GetMapping("/skill/edit")
     public String showSkillEditPage(
             @RequestParam(name = "month", required = false) Integer monthParam, 
@@ -37,8 +41,27 @@ public class SkillController {
         
         model.addAttribute("categories", categories);
         model.addAttribute("months", months);
-        model.addAttribute("selectedMonth", targetMonthValue); // 選択状態を保持するため
+        model.addAttribute("selectedMonth", targetMonthValue);
         
         return "skill-edit";
+    }
+
+    // 項目追加画面の表示
+    @GetMapping("/skill/new")
+    public String showAddForm(
+            @RequestParam("month") Integer month,
+            @RequestParam("categoryId") Integer categoryId,
+            Model model) {
+
+        // IDからカテゴリー情報を取得（名前を表示するため）
+        Category category = categoryRepository.findById(categoryId).orElse(null);
+        String categoryName = (category != null) ? category.getName() : "不明なカテゴリー";
+
+        // 画面に必要なデータを渡す
+        model.addAttribute("categoryName", categoryName);
+        model.addAttribute("selectedMonth", month);
+        model.addAttribute("skillAddForm", new SkillAddForm()); // 空のフォームを渡す
+
+        return "skill-new";
     }
 }
