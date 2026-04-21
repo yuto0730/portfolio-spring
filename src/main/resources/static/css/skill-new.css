@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+/* =========================================================
+   【メインレイアウト】ベース設定
+========================================================= */
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;         /* WF指定 */
+    width: 100%;
+    min-width: 1440px;                 /* WF指定 */
+    min-height: calc(100vh - 160px);
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   【メインレイアウト】タイトル
+========================================================= */
+.page-title {
+    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-size: 32px;                   /* WF指定 */
+    font-weight: 400;                  /* WF指定 */
+    color: #333333;
+    margin-top: 120px;                 /* WF指定 */
+    margin-bottom: 208px;              /* WF指定 */
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* =========================================================
+   【共通部分】フッター位置固定用調整
+========================================================= */
+/* フッターが画面最下部に固定されるよう、bodyもflex制御を推奨 */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
