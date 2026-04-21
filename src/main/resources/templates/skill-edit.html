@@ -2,9 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>スキル編集 | My Portfolio</title>
+    <title>項目追加 | My Portfolio</title>
     <link rel="stylesheet" th:href="@{/css/common.css}">
-    <link rel="stylesheet" th:href="@{/css/skill-edit.css}">
+    <link rel="stylesheet" th:href="@{/css/skill-new.css}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -16,45 +16,29 @@
     </header>
 
     <main class="main-wrapper">
-        
-        <div class="pull-down-container">
-            <select class="month-pull-down" onchange="location.href='/skill/edit?month=' + this.value">
-                <option th:each="month : ${months}" 
-                        th:value="${month.getMonthValue()}" 
-                        th:text="${month.getMonthValue() + '月'}"
-                        th:selected="${month.getMonthValue() == selectedMonth}">
-                </option>
-            </select>
-        </div>
+        <h1 class="page-title">
+            <span th:text="${categoryName}">{カテゴリー名}</span> に項目を追加
+        </h1>
 
-        <div class="category-list">
-            <section class="category" th:each="category : ${categories}">
-                
-                <div class="title-container">
-                    <div class="title-group">
-                        <h2 class="category-title" th:text="${category.name}"></h2>
-                        <div class="title-line"></div>
-                    </div>
-                    <button class="btn-add">項目を追加する</button>
-                </div>
+        <form class="add-form" th:action="@{/skill/new}" th:object="${skillAddForm}" method="post">
+            
+            <div class="form-group">
+                <label for="name" class="form-label">項目名</label>
+                <input type="text" th:field="*{name}" id="name" class="input-field" placeholder="PHP">
+                <p class="error-message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+            </div>
 
-                <div class="card">
-                    <table class="skill-table">
-                        <thead>
-                            <tr>
-                                <th class="col-name">項目名</th>
-                                <th class="col-time">学習時間</th>
-                                <th class="col-action-save"></th>
-                                <th class="col-action-delete"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            </tbody>
-                    </table>
-                </div>
+            <div class="form-group">
+                <label for="studyTime" class="form-label">学習時間</label>
+                <input type="number" th:field="*{studyTime}" id="studyTime" class="input-field" placeholder="30">
+                <p class="form-note">分単位で入力してください</p>
+                <p class="error-message" th:if="${#fields.hasErrors('studyTime')}" th:errors="*{studyTime}"></p>
+            </div>
 
-            </section>
-        </div>
+            <div class="button-container">
+                <button type="submit" class="btn-submit">追加する</button>
+            </div>
+        </form>
     </main>
 
     <footer class="footer">

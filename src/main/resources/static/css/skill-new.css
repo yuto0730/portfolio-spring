@@ -29,9 +29,84 @@
 }
 
 /* =========================================================
-   【共通部分】フッター位置固定用調整
+   【入力フォーム】フォーム全体の構造
 ========================================================= */
-/* フッターが画面最下部に固定されるよう、bodyもflex制御を推奨 */
+.add-form {
+    width: 480px;                      /* WF指定 */
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 48px;               /* WF指定: 間隔 48px */
+}
+
+/* =========================================================
+   【入力フォーム】ラベル・入力欄
+========================================================= */
+.form-label {
+    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-size: 12px;                   /* WF指定 */
+    font-weight: 400;                  /* WF指定 */
+    color: #000000;                    /* WF指定 */
+    margin-bottom: 10px;               /* WF指定 */
+}
+
+.input-field {
+    width: 480px;                      /* WF指定 */
+    height: 48px;                      /* WF指定 */
+    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-size: 16px;                   /* WF指定 */
+    border: none;
+    border-bottom: 1px solid #000000;  /* 下線スタイル */
+    outline: none;
+    box-sizing: border-box;
+}
+
+.form-note {
+    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-size: 12px;                   /* WF指定 */
+    font-weight: 400;                  /* WF指定 */
+    color: #000000;                    /* WF指定 */
+    margin-top: 10px;                  /* WF指定 */
+    margin-bottom: 0;
+}
+
+/* =========================================================
+   【入力フォーム】バリデーションメッセージ
+========================================================= */
+.error-message {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #FF0000;                    /* 赤字指定 */
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+/* =========================================================
+   【入力フォーム】ボタン
+========================================================= */
+.btn-submit {
+    width: 480px;                      /* WF指定 */
+    height: 48px;                      /* WF指定 */
+    background-color: #1B5678;         /* WF指定 */
+    color: #ffffff;                    /* WF指定 */
+    border: none;
+    border-radius: 4px;                /* WF指定 */
+    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-size: 16px;                   /* WF指定 */
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =========================================================
+   【共通部分】ベース設定
+========================================================= */
 body {
     margin: 0;
     padding: 0;
