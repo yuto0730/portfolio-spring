@@ -20,7 +20,26 @@
             <span th:text="${categoryName}">{カテゴリー名}</span> に項目を追加
         </h1>
 
-        </main>
+        <form class="add-form" th:action="@{/skill/new}" th:object="${skillAddForm}" method="post">
+            
+            <div class="form-group">
+                <label for="name" class="form-label">項目名</label>
+                <input type="text" th:field="*{name}" id="name" class="input-field" placeholder="PHP">
+                <p class="error-message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="studyTime" class="form-label">学習時間</label>
+                <input type="number" th:field="*{studyTime}" id="studyTime" class="input-field" placeholder="30">
+                <p class="form-note">分単位で入力してください</p>
+                <p class="error-message" th:if="${#fields.hasErrors('studyTime')}" th:errors="*{studyTime}"></p>
+            </div>
+
+            <div class="button-container">
+                <button type="submit" class="btn-submit">追加する</button>
+            </div>
+        </form>
+    </main>
 
     <footer class="footer">
         <p class="footer-text">portfolio site</p>

@@ -9,8 +9,8 @@
     align-items: center;
     background-color: #ffffff;         /* WF指定 */
     width: 100%;
-    min-width: 1440px;                 /* WF指定 */
-    min-height: calc(100vh - 160px);
+    min-width: 1440px;
+    min-height: calc(100vh - 160px);  /* ヘッダーとフッターの高さを引いた値 */
     box-sizing: border-box;
 }
 
@@ -18,21 +18,20 @@
    【メインレイアウト】タイトル
 ========================================================= */
 .page-title {
-    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-family: 'Roboto', sans-serif;
     font-size: 32px;                   /* WF指定 */
-    font-weight: 400;                  /* WF指定 */
+    font-weight: 400;
     color: #333333;
-    margin-top: 120px;                 /* WF指定 */
-    margin-bottom: 208px;              /* WF指定 */
+    margin-top: 120px;                 /* WF指定: 上余白 */
+    margin-bottom: 208px;              /* WF指定: 下余白 */
     text-align: center;
-    line-height: 1.2;
 }
 
 /* =========================================================
-   【入力フォーム】フォーム全体の構造
+   【入力フォーム】全体の幅と間隔
 ========================================================= */
 .add-form {
-    width: 480px;                      /* WF指定 */
+    width: 480px;                      /* WF指定: フォーム幅 */
     display: flex;
     flex-direction: column;
 }
@@ -40,77 +39,74 @@
 .form-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 48px;               /* WF指定: 間隔 48px */
+    margin-bottom: 48px;               /* 各項目の間隔 */
 }
 
 /* =========================================================
    【入力フォーム】ラベル・入力欄
 ========================================================= */
 .form-label {
-    font-family: 'Roboto', sans-serif; /* WF指定 */
-    font-size: 12px;                   /* WF指定 */
-    font-weight: 400;                  /* WF指定 */
-    color: #000000;                    /* WF指定 */
-    margin-bottom: 10px;               /* WF指定 */
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 10px;
 }
 
 .input-field {
-    width: 480px;                      /* WF指定 */
-    height: 48px;                      /* WF指定 */
-    font-family: 'Roboto', sans-serif; /* WF指定 */
-    font-size: 16px;                   /* WF指定 */
+    width: 480px;
+    height: 48px;
+    font-size: 16px;
     border: none;
-    border-bottom: 1px solid #000000;  /* 下線スタイル */
+    border-bottom: 1px solid #000000; /* WF指定: 下線 */
     outline: none;
     box-sizing: border-box;
 }
 
 .form-note {
-    font-family: 'Roboto', sans-serif; /* WF指定 */
-    font-size: 12px;                   /* WF指定 */
-    font-weight: 400;                  /* WF指定 */
-    color: #000000;                    /* WF指定 */
-    margin-top: 10px;                  /* WF指定 */
-    margin-bottom: 0;
+    font-size: 12px;
+    margin-top: 10px;
+    color: #000000;
 }
 
-/* =========================================================
-   【入力フォーム】バリデーションメッセージ
-========================================================= */
 .error-message {
-    font-family: 'Roboto', sans-serif;
     font-size: 12px;
-    color: #FF0000;                    /* 赤字指定 */
+    color: #FF0000; 
     margin-top: 4px;
-    margin-bottom: 0;
 }
 
 /* =========================================================
    【入力フォーム】ボタン
 ========================================================= */
 .btn-submit {
-    width: 480px;                      /* WF指定 */
-    height: 48px;                      /* WF指定 */
+    width: 480px;
+    height: 48px;
     background-color: #1B5678;         /* WF指定 */
-    color: #ffffff;                    /* WF指定 */
+    color: #ffffff;
     border: none;
-    border-radius: 4px;                /* WF指定 */
-    font-family: 'Roboto', sans-serif; /* WF指定 */
-    font-size: 16px;                   /* WF指定 */
+    border-radius: 4px;
+    font-size: 16px;
     font-weight: 700;
     cursor: pointer;
+}
+
+/* =========================================================
+   【共通・修正】フッターの幅修正
+========================================================= */
+.footer {
+    width: 100%;
+    min-width: 1440px; 
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* =========================================================
-   【共通部分】ベース設定
-========================================================= */
+.footer-text {
+    color: #ffffff;
+    margin: 0;
+}
+
 body {
     margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
 }
