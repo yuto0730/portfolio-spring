@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.spring.springbootapplication.repository.CategoryRepository; 
 import com.spring.springbootapplication.entity.Category; 
-import com.spring.springbootapplication.form.SkillAddForm; // 追加
+import com.spring.springbootapplication.form.SkillAddForm; 
 import java.util.List;
 import java.util.ArrayList; 
 import java.time.LocalDate; 
@@ -18,9 +18,7 @@ public class SkillController {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    /**
-     * スキル編集画面（一覧）の表示
-     */
+    //スキル編集画面（一覧）の表示
     @GetMapping("/skill/edit")
     public String showSkillEditPage(
             @RequestParam(name = "month", required = false) Integer monthParam, 
@@ -42,6 +40,7 @@ public class SkillController {
         model.addAttribute("categories", categories);
         model.addAttribute("months", months);
         model.addAttribute("selectedMonth", targetMonthValue);
+        model.addAttribute("skillAddForm", new SkillAddForm());
         
         return "skill-edit";
     }

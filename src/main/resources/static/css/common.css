@@ -97,6 +97,7 @@ main {
     height: 40px;              /*指定*/
     text-align: center;
     width: 100%;
+    min-width: 1440px;
     display: flex;
     justify-content: center;
     align-items: center;
