@@ -7,6 +7,7 @@ import com.spring.springbootapplication.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder; 
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 @Service
 public class UserService {
@@ -39,10 +40,15 @@ public class UserService {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
 
+        // 作成日時と更新日時をセット
+        user.setCreatedAt(LocalDateTime.now());
+        user.setUpdatedAt(LocalDateTime.now());
+
         // すべてOKなら保存
         return userRepository.save(user);
     }
 
+    
     public User findUserByEmail(String email) {
         // リポジトリからメールアドレスで検索して、見つかったら返し、なければ null を返す
         return userRepository.findByEmail(email).orElse(null);

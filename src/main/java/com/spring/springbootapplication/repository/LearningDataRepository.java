@@ -18,4 +18,7 @@ public interface LearningDataRepository extends JpaRepository<LearningData, Inte
 
     // 重複チェック：同じユーザー、同じカテゴリー、同じ月、同じ名前のデータが既に存在するか確認する
     Optional<LearningData> findByUserIdAndCategoryIdAndStudyMonthAndName(Integer userId, Integer categoryId, LocalDate studyMonth, String name);
+
+    // ユーザーIDと学習月でデータを一覧取得するメソッド
+    List<LearningData> findByUserIdAndStudyMonth(Integer userId, LocalDate studyMonth);
 }

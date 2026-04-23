@@ -18,12 +18,13 @@
    【メインレイアウト】タイトル
 ========================================================= */
 .page-title {
-    font-family: 'Roboto', sans-serif;
-    font-size: 32px;                   /* WF指定 */
-    font-weight: 400;
+    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-size: 36px;                   /* WF指定 */
+    font-weight: 400;                  /* WF指定 */
+    line-height: 1.33;                 /* WF指定 (133%) */
     color: #333333;
-    margin-top: 120px;                 /* WF指定 */
-    margin-bottom: 208px;              /* WF指定 */
+    margin-top: 80px;                  /* WF指定 (ヘッダーとの間隔) */
+    margin-bottom: 48px;               /* WF指定 (フォームとの間隔) */
     text-align: center;
 }
 
@@ -68,9 +69,13 @@
     margin-top: 4px;
 }
 
+.button-container {
+    text-align: center;
+}
+
 .btn-submit {
-    width: 480px;                      /* WF指定 */
-    height: 48px;                      /* WF指定 */
+    width: 232px;                      /* WF指定 */
+    height: 53px;                      /* WF指定 */
     background-color: #1B5678;         /* WF指定 */
     color: #ffffff;
     border: none;
@@ -78,6 +83,8 @@
     font-size: 16px;
     font-weight: 700;
     margin-top: 72px;                  /* WF指定 */
+    padding: 16px 80px;                /* WF指定 */
+    box-sizing: border-box;
 }
 
 /* =========================================================
@@ -102,4 +109,63 @@
 
 body {
     margin: 0;
+}
+
+/* =========================================================
+   【モーダル】登録完了
+========================================================= */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* WF指定 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    width: 640px;                         /* WF指定 */
+    height: 240px;                        /* WF指定 */
+    background-color: #FFFFFF;            /* WF指定 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;                    /* WF指定 */
+    box-sizing: border-box;
+}
+
+.modal-text {
+    font-family: 'Roboto', sans-serif;    /* WF指定 */
+    font-weight: 700;                     /* WF指定 */
+    font-size: 18px;                      /* WF指定 */
+    line-height: 1;                       /* WF指定 */
+    text-align: center;                   /* WF指定 */
+    color: rgba(0, 0, 0, 0.75);           /* WF指定 */
+    margin: 0;
+    margin-bottom: 50px;                  /* WF指定 */
+}
+
+.modal-text br {
+    display: block;
+    content: "";
+    margin-top: 10px;                     /* WF指定 */
+}
+
+.button-blue {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 192px;                         /* WF指定 */
+    height: 48px;                         /* WF指定 */
+    background-color: #1B5678;            /* WF指定 */
+    border-radius: 4px;                   /* WF指定 */
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;    /* WF指定 */
+    font-weight: 400;                     /* WF指定 */
+    font-size: 14px;                      /* WF指定 */
+    color: #FFFFFF;                       /* WF指定 */
 }

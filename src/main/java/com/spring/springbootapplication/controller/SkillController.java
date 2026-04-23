@@ -40,11 +40,15 @@ public class SkillController {
     @GetMapping("/skill/edit")
     public String showSkillEditPage(
             @RequestParam(name = "month", required = false) Integer monthParam, 
+            Principal principal, 
             Model model) {
         
         // 表示する月の決定（指定がなければ当月）
         LocalDate now = LocalDate.now();
         int targetMonthValue = (monthParam != null) ? monthParam : now.getMonthValue();
+        
+        // 検索用に「選択された月の1日」のLocalDateを作成
+        LocalDate targetStudyMonth = LocalDate.of(now.getYear(), targetMonthValue, 1);
         
         // 月の選択肢リスト作成（今月・先月・先々月）
         List<LocalDate> months = new ArrayList<>();
@@ -54,6 +58,16 @@ public class SkillController {
 
         // カテゴリー一覧取得
         List<Category> categories = categoryRepository.findAll();
+        
+        // ログインユーザー かつ 「選択された月」の学習データのみを取得してModelに渡す
+        if (principal != null) {
+            User user = userRepository.findByEmail(principal.getName()).orElse(null);
+            if (user != null) {
+                // ※LearningDataRepositoryに findByUserIdAndStudyMonth() が定義されている前提です
+                List<LearningData> learningDataList = learningDataRepository.findByUserIdAndStudyMonth(user.getId(), targetStudyMonth);
+                model.addAttribute("learningDataList", learningDataList);
+            }
+        }
         
         model.addAttribute("categories", categories);
         model.addAttribute("months", months);
@@ -71,7 +85,10 @@ public class SkillController {
             Model model) {
 
         // IDからカテゴリー情報を取得（名前を表示するため）
-        Category category = categoryRepository.findById(categoryId).orElse(null);
+        Category category = null;
+        if (categoryId != null) {
+            category = categoryRepository.findById(categoryId).orElse(null);
+        }
         String categoryName = (category != null) ? category.getName() : "不明なカテゴリー";
 
         // 画面に必要なデータを渡す
@@ -95,15 +112,29 @@ public class SkillController {
             return prepareAddForm(monthParam, categoryId, model);
         }
 
+        // 未ログイン時のnullチェックを追加して500エラーを防止
+        if (principal == null) {
+            return "redirect:/login";
+        }
+
         User user = userRepository.findByEmail(principal.getName()).orElse(null);
+        
+        // ユーザーがDBに存在しない場合の安全策
+        if (user == null) {
+            return prepareAddForm(monthParam, categoryId, model);
+        }
+
         Integer userId = user.getId(); 
 
         LocalDate studyMonth = LocalDate.of(LocalDate.now().getYear(), monthParam, 1);
 
+        // 重複チェックの文言：「{項目名}は既に登録されています」
         if (learningDataRepository.findByUserIdAndCategoryIdAndStudyMonthAndName(
                 userId, categoryId, studyMonth, skillAddForm.getName()).isPresent()) {
             
-            result.rejectValue("name", "error.duplicate", "同じ月に同じ項目名が既に登録されています");
+            String errorMessage = skillAddForm.getName() + "は既に登録されています";
+            result.rejectValue("name", "error.duplicate", errorMessage);
+            
             return prepareAddForm(monthParam, categoryId, model);
         }
 
@@ -112,18 +143,31 @@ public class SkillController {
         data.setCategoryId(categoryId);
         data.setStudyMonth(studyMonth);
         data.setName(skillAddForm.getName());
-        data.setStudyTime(skillAddForm.getStudyTime());
-        
-        data.setCreatedId(LocalDateTime.now());
-        data.setUpdatedId(LocalDateTime.now());
+        data.setStudyTime(skillAddForm.getStudy_time());
+        data.setCreatedAt(LocalDateTime.now());
+        data.setUpdatedAt(LocalDateTime.now());
 
         learningDataRepository.save(data);
 
-        return "redirect:/skill/edit?month=" + monthParam;
+        // 保存後はリダイレクトせず、モーダルを表示するために現在の画面を再表示する
+        Category category = null;
+        if (categoryId != null) {
+            category = categoryRepository.findById(categoryId).orElse(null);
+        }
+        model.addAttribute("categoryName", (category != null) ? category.getName() : "不明なカテゴリー");
+        model.addAttribute("selectedMonth", monthParam);
+        
+        // 成功の合図（これがある時だけHTMLのモーダルが表示される）
+        model.addAttribute("isSuccess", true); 
+
+        return "skill-new";
     }
 
     private String prepareAddForm(Integer month, Integer categoryId, Model model) {
-        Category category = categoryRepository.findById(categoryId).orElse(null);
+        Category category = null;
+        if (categoryId != null) {
+            category = categoryRepository.findById(categoryId).orElse(null);
+        }
         model.addAttribute("categoryName", (category != null) ? category.getName() : "不明なカテゴリー");
         model.addAttribute("selectedMonth", month);
         return "skill-new";

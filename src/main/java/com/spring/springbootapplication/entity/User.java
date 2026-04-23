@@ -3,6 +3,7 @@ package com.spring.springbootapplication.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*; 
 import lombok.Data;
+import java.time.LocalDateTime; 
 
 @Entity
 @Table(name = "users")
@@ -44,4 +45,12 @@ public class User {
     // プロフィール画像のファイル名を保存する項目
     @Column(name = "profile_image_name")
     private String profileImageName;
+
+    // 作成日時
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
+
+    // 更新日時
+    @Column(name = "updated_at", nullable = false)
+    private LocalDateTime updatedAt;
 }

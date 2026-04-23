@@ -32,14 +32,17 @@
 
            <div class="intro-container">
                 <h2 class="intro-title">自己紹介</h2>
-                <div class="intro-text-box" th:text="${user.selfIntroduction}">
-                    </div>
+                <div class="intro-text-box" th:text="${user.bio}">
+                </div>
                 <a th:href="@{/profile/edit}" class="profile-edit-btn">自己紹介を編集する</a>
             </div>
         </section>
+
         <div class="chart-section">
             <h2 class="chart-title">学習チャート</h2>
-            <button class="chart-edit-btn">編集する</button>
+            <a th:href="@{/skill/edit}" class="chart-edit-btn">
+                編集する
+            </a>
         </div>
     </main>
 
