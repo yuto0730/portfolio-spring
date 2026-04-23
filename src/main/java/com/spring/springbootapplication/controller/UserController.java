@@ -54,7 +54,7 @@ public class UserController {
 
         // フォームクラスに、現在のDBの値をセットする（初期値の表示用）
         ProfileEditForm profileEditForm = new ProfileEditForm();
-        profileEditForm.setSelfIntroduction(user.getSelfIntroduction());
+        profileEditForm.setSelfIntroduction(user.getBio());
         profileEditForm.setProfileImageName(user.getProfileImageName()); 
 
         // フォームをModelに追加して画面に渡す

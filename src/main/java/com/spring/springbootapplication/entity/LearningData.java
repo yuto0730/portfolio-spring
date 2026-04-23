@@ -16,30 +16,28 @@ public class LearningData {
     private Integer id; // ID
 
     // ユーザーID
-    @Column(name = "user_id")
+    @Column(name = "user_id", nullable = false)
     private Integer userId;
 
     // カテゴリーID
-    @Column(name = "category_id")
+    @Column(name = "category_id", nullable = false)
     private Integer categoryId;
 
     // 学習項目名：50文字以内
-    @Column(name = "name", length = 50) /* WF指定 */
+    @Column(name = "name", length = 50, nullable = false) 
     private String name;
 
     // 学習時間
-    @Column(name = "study_time")
+    @Column(name = "study_time", nullable = false)
     private Integer studyTime;
 
     // 学習月
-    @Column(name = "study_month")
+    @Column(name = "study_month", nullable = false)
     private LocalDate studyMonth;
 
-    // 作成日時
-    @Column(name = "created_id")
-    private LocalDateTime createdId;
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
 
-    // 更新日時
-    @Column(name = "updated_id")
-    private LocalDateTime updatedId;
+    @Column(name = "updated_at", nullable = false)
+    private LocalDateTime updatedAt;
 }

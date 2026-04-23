@@ -117,6 +117,11 @@
 
 /* チャートの「編集する」ボタン */
 .chart-edit-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
     width: 152px;                      /*指定*/
     height: 53px;                      /*指定*/
     background-color: #1B5678;         /*指定*/

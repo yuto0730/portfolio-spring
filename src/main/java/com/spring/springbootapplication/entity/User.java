@@ -3,6 +3,7 @@ package com.spring.springbootapplication.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*; 
 import lombok.Data;
+import java.time.LocalDateTime; 
 
 @Entity
 @Table(name = "users")
@@ -12,7 +13,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Integer id;
 
     // 名前：必須、255文字まで
     @NotBlank(message = "氏名は必ず入力してください")
@@ -34,8 +35,8 @@ public class User {
 
     // 自己紹介文：200文字以下
     @Size(max = 200, message = "自己紹介は200文字以下で入力してください")
-    @Column(name = "self_introduction", length = 200)
-    private String selfIntroduction;
+    @Column(name = "bio", length = 200)
+    private String bio;
 
     // プロフィール画像（画像データそのものをDBに直接保存）
     @Column(name = "profile_image", columnDefinition = "bytea")
@@ -44,4 +45,12 @@ public class User {
     // プロフィール画像のファイル名を保存する項目
     @Column(name = "profile_image_name")
     private String profileImageName;
+
+    // 作成日時
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
+
+    // 更新日時
+    @Column(name = "updated_at", nullable = false)
+    private LocalDateTime updatedAt;
 }

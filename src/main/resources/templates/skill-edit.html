@@ -35,7 +35,9 @@
                         <h2 class="category-title" th:text="${category.name}"></h2>
                         <div class="title-line"></div>
                     </div>
-                    <button class="btn-add">項目を追加する</button>
+                    <button class="btn-add" th:onclick="|location.href='@{/skill/new(month=${selectedMonth},categoryId=${category.id})}'|">
+                        項目を追加する
+                    </button>
                 </div>
 
                 <div class="card">
@@ -49,7 +51,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            </tbody>
+                            <tr th:each="data : ${learningDataList}" th:if="${data.categoryId == category.id}">
+                                <td class="col-name">
+                                    <span class="item-name" th:text="${data.name}"></span>
+                                </td>
+                                <td class="col-time">
+                                    <input type="number" class="input-time" th:value="${data.studyTime}">
+                                </td>
+                                <td class="col-action-save">
+                                    <button type="button" class="btn-save-time">学習時間を保存する</button>
+                                </td>
+                                <td class="col-action-delete">
+                                    <button type="button" class="btn-delete-skill">削除する</button>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
 

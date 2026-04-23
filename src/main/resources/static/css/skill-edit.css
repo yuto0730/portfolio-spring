@@ -142,3 +142,48 @@
 .col-time { width: 240px; /* WF指定 */ }
 .col-action-save { width: 200px; /* WF指定 */ }
 .col-action-delete { width: 200px; /* WF指定 */ }
+
+/* =========================================================
+   【学習項目編集画面】保存後に追加されるテーブル内の要素
+========================================================= */
+.item-name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.input-time {
+    width: 80px;
+    height: 32px;
+    padding: 4px 8px;
+    border: 1px solid rgba(0, 0, 0, 0.23); /* 枠線 */
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* 保存ボタン */
+.btn-save-time {
+    width: 160px;
+    height: 40px;
+    background-color: #FFFFFF;
+    color: #1B5678;
+    border: 1px solid #1B5678;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+/* 削除ボタン */
+.btn-delete-skill {
+    width: 80px;
+    height: 40px;
+    background-color: #EF5350; 
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
