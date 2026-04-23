@@ -51,7 +51,7 @@ public class UserService {
     // プロフィール（自己紹介と画像）を更新するメソッド
     public void updateUserProfile(User user, com.spring.springbootapplication.form.ProfileEditForm form) throws IOException {
         // 自己紹介文をセット
-        user.setSelfIntroduction(form.getSelfIntroduction());
+        user.setBio(form.getSelfIntroduction());
 
         // 画像の保存処理
         MultipartFile file = form.getProfileImage();

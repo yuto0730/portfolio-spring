@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.spring.springbootapplication.entity.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long>{
+public interface UserRepository extends JpaRepository<User, Integer>{
     //メールアドレスでユーザーを探す
     Optional<User>findByEmail(String email);
 }

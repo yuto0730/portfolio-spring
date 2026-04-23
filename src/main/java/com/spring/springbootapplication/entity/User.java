@@ -12,7 +12,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Integer id;
 
     // 名前：必須、255文字まで
     @NotBlank(message = "氏名は必ず入力してください")
@@ -34,8 +34,8 @@ public class User {
 
     // 自己紹介文：200文字以下
     @Size(max = 200, message = "自己紹介は200文字以下で入力してください")
-    @Column(name = "self_introduction", length = 200)
-    private String selfIntroduction;
+    @Column(name = "bio", length = 200)
+    private String bio;
 
     // プロフィール画像（画像データそのものをDBに直接保存）
     @Column(name = "profile_image", columnDefinition = "bytea")
