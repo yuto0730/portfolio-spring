@@ -108,10 +108,6 @@ public class SkillController {
             Principal principal,
             Model model) {
 
-        if (result.hasErrors()) {
-            return prepareAddForm(monthParam, categoryId, model);
-        }
-
         // 未ログイン時のnullチェックを追加して500エラーを防止
         if (principal == null) {
             return "redirect:/login";
@@ -125,19 +121,24 @@ public class SkillController {
         }
 
         Integer userId = user.getId(); 
-
         LocalDate studyMonth = LocalDate.of(LocalDate.now().getYear(), monthParam, 1);
 
-        // 重複チェックの文言：「{項目名}は既に登録されています」
-        if (learningDataRepository.findByUserIdAndCategoryIdAndStudyMonthAndName(
-                userId, categoryId, studyMonth, skillAddForm.getName()).isPresent()) {
-            
-            String errorMessage = skillAddForm.getName() + "は既に登録されています";
-            result.rejectValue("name", "error.duplicate", errorMessage);
-            
+        // 重複チェックをhasErrorsの前に移動し、アノテーションエラーと同時に拾えるようにする
+        if (skillAddForm.getName() != null && !skillAddForm.getName().isEmpty()) {
+            if (learningDataRepository.findByUserIdAndCategoryIdAndStudyMonthAndName(
+                    userId, categoryId, studyMonth, skillAddForm.getName()).isPresent()) {
+                
+                String errorMessage = skillAddForm.getName() + "は既に登録されています";
+                result.rejectValue("name", "error.duplicate", errorMessage);
+            }
+        }
+
+        // 入力エラー（未入力、文字数、重複など）があれば画面を戻す
+        if (result.hasErrors()) {
             return prepareAddForm(monthParam, categoryId, model);
         }
 
+        // 保存処理
         LearningData data = new LearningData();
         data.setUserId(userId);
         data.setCategoryId(categoryId);

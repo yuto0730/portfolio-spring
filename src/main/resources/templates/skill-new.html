@@ -50,7 +50,8 @@
     <div class="modal-overlay" th:if="${isSuccess}">
         <div class="modal-content">
             <p class="modal-text">
-                <span th:text="${skillAddForm.name} + ' の学習時間を保存しました！'"></span>
+                <span th:text="${categoryName} + ' に ' + ${skillAddForm.name} + ' を'"></span><br>
+                <span th:text="${skillAddForm.study_time} + '分で追加しました！'"></span>
             </p>
             <a th:href="@{/skill/edit(month=${selectedMonth})}" class="button-blue">
                 編集ページに戻る
