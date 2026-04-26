@@ -187,3 +187,54 @@
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
 }
+
+/* =========================================================
+   【学習項目編集画面】編集完了モーダル
+========================================================= */
+/* 背景の暗幕 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75); /* WF指定: 黒色75% */
+    display: none; /* 初期状態は非表示（後でThymeleafで制御） */
+    justify-content: center; /* 左右中央揃え */
+    align-items: center; /* 上下中央揃え */
+    z-index: 100; /* 最前面に表示 */
+}
+
+/* モーダルの白い箱 */
+.modal-content {
+    width: 640px; /* WF指定 */
+    height: 240px; /* WF指定 */
+    background-color: #FFFFFF; /* WF指定 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* メッセージテキスト */
+.modal-message {
+    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-size: 18px; /* WF指定 */
+    font-weight: 700; /* WF指定(Bold) */
+    color: #000000; /* WF指定 */
+    margin: 0 0 40px 0; /* WF指定: 下余白40px */
+}
+
+/* 編集ページに戻るボタン */
+.btn-modal-back {
+    width: 192px; /* WF指定 */
+    height: 48px; /* WF指定 */
+    background-color: #1B5678; /* WF指定 */
+    color: #FFFFFF; /* WF指定 */
+    font-family: 'Roboto', sans-serif; /* WF指定 */
+    font-size: 14px; /* WF指定 */
+    font-weight: 400; /* WF指定(Regular) */
+    border: none;
+    border-radius: 4px; /* WF指定 */
+}
