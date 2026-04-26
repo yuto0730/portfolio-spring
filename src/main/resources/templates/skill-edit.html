@@ -59,7 +59,9 @@
                                     <input type="number" class="input-time" th:value="${data.studyTime}">
                                 </td>
                                 <td class="col-action-save">
-                                    <button type="button" class="btn-save-time">学習時間を保存する</button>
+                                    <form th:action="@{/skill/update}" method="post" th:id="'update-form-' + ${data.id}">
+                                        <button type="button" class="btn-save-time">学習時間を保存する</button>
+                                    </form>
                                 </td>
                                 <td class="col-action-delete">
                                     <button type="button" class="btn-delete-skill">削除する</button>
