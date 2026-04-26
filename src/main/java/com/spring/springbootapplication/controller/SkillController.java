@@ -180,6 +180,12 @@ public class SkillController {
             @RequestParam("studyTime") Integer studyTime,
             @RequestParam("selectedMonth") Integer selectedMonth) {
         
+        System.out.println("--- 更新データの受け取り確認 ---");
+        System.out.println("ID: " + id);
+        System.out.println("学習時間: " + studyTime);
+        System.out.println("選択された月: " + selectedMonth);
+        System.out.println("--------------------------------");
+        
         return "redirect:/skill/edit?month=" + selectedMonth;
     }
 }
