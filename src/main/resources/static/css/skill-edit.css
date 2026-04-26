@@ -199,7 +199,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.75); /* WF指定: 黒色75% */
-    display: none; /* 初期状態は非表示（後でThymeleafで制御） */
+    display: flex; 
     justify-content: center; /* 左右中央揃え */
     align-items: center; /* 上下中央揃え */
     z-index: 100; /* 最前面に表示 */
@@ -237,4 +237,8 @@
     font-weight: 400; /* WF指定(Regular) */
     border: none;
     border-radius: 4px; /* WF指定 */
+    text-decoration: none; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; /
 }

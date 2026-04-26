@@ -77,10 +77,12 @@
         </div>
     </div>
 
-    <div class="modal-overlay">
+    <div class="modal-overlay" th:if="${isSuccess}">
         <div class="modal-content">
-            <p class="modal-message">{項目名}の学習時間を保存しました！</p>
-            <button class="btn-modal-back" type="button">編集ページに戻る</button>
+            <p class="modal-message">
+                <span th:text="${updatedItemName}"></span>の学習時間を保存しました！
+            </p>
+            <a th:href="@{/skill/edit(month=${selectedMonth})}" class="btn-modal-back">編集ページに戻る</a>
         </div>
     </div>
 
