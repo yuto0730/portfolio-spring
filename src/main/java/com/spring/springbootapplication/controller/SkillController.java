@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes; 
 import jakarta.validation.Valid;
 import java.security.Principal;
 
@@ -182,10 +183,19 @@ public class SkillController {
     public String updateSkillTime(
             @RequestParam("id") Integer id,
             @RequestParam("studyTime") Integer studyTime,
-            @RequestParam("selectedMonth") Integer selectedMonth) {
+            @RequestParam("selectedMonth") Integer selectedMonth,
+            RedirectAttributes redirectAttributes) { //リダイレクト先にデータを渡すための引数
         
-        //サービスを呼び出して学習時間を更新する
+        // 更新する項目の「名前」を取得しておく（モーダルに表示するため）
+        LearningData data = learningDataRepository.findById(id).orElse(null);
+        String itemName = (data != null) ? data.getName() : "";
+
+        // サービスを呼び出して学習時間を更新する
         learningDataService.updateStudyTime(id, studyTime);
+        
+        // モーダル表示用のフラグと項目名を、リダイレクト先に渡す
+        redirectAttributes.addFlashAttribute("isSuccess", true);
+        redirectAttributes.addFlashAttribute("updatedItemName", itemName);
         
         return "redirect:/skill/edit?month=" + selectedMonth;
     }
