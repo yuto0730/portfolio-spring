@@ -173,4 +173,10 @@ public class SkillController {
         model.addAttribute("selectedMonth", month);
         return "skill-new";
     }
+
+    @PostMapping("/skill/update")
+    public String updateSkillTime() {
+        
+        return "redirect:/skill/edit";
+    }
 }
