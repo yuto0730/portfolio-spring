@@ -18,6 +18,7 @@ import com.spring.springbootapplication.entity.Category;
 import com.spring.springbootapplication.entity.LearningData;
 import com.spring.springbootapplication.entity.User;
 import com.spring.springbootapplication.form.SkillAddForm; 
+import com.spring.springbootapplication.service.LearningDataService;
 
 import java.util.List;
 import java.util.ArrayList; 
@@ -35,6 +36,9 @@ public class SkillController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private LearningDataService learningDataService;
 
     //スキル編集画面（一覧）の表示
     @GetMapping("/skill/edit")
@@ -180,11 +184,8 @@ public class SkillController {
             @RequestParam("studyTime") Integer studyTime,
             @RequestParam("selectedMonth") Integer selectedMonth) {
         
-        System.out.println("--- 更新データの受け取り確認 ---");
-        System.out.println("ID: " + id);
-        System.out.println("学習時間: " + studyTime);
-        System.out.println("選択された月: " + selectedMonth);
-        System.out.println("--------------------------------");
+        //サービスを呼び出して学習時間を更新する
+        learningDataService.updateStudyTime(id, studyTime);
         
         return "redirect:/skill/edit?month=" + selectedMonth;
     }
