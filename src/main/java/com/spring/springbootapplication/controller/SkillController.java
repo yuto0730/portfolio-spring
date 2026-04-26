@@ -175,8 +175,11 @@ public class SkillController {
     }
 
     @PostMapping("/skill/update")
-    public String updateSkillTime() {
+    public String updateSkillTime(
+            @RequestParam("id") Integer id,
+            @RequestParam("studyTime") Integer studyTime,
+            @RequestParam("selectedMonth") Integer selectedMonth) {
         
-        return "redirect:/skill/edit";
+        return "redirect:/skill/edit?month=" + selectedMonth;
     }
 }
