@@ -62,7 +62,7 @@
                                     <form th:action="@{/skill/update}" method="post" th:id="'update-form-' + ${data.id}">
                                         <input type="hidden" name="id" th:value="${data.id}">
                                         <input type="hidden" name="selectedMonth" th:value="${selectedMonth}">
-                                        <button type="button" class="btn-save-time">学習時間を保存する</button>
+                                        <button type="submit" class="btn-save-time">学習時間を保存する</button>
                                     </form>
                                 </td>
                                 <td class="col-action-delete">
