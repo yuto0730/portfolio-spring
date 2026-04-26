@@ -56,10 +56,14 @@
                                     <span class="item-name" th:text="${data.name}"></span>
                                 </td>
                                 <td class="col-time">
-                                    <input type="number" class="input-time" th:value="${data.studyTime}">
+                                    <input type="number" name="studyTime" class="input-time" th:value="${data.studyTime}" th:form="'update-form-' + ${data.id}">
                                 </td>
                                 <td class="col-action-save">
-                                    <button type="button" class="btn-save-time">学習時間を保存する</button>
+                                    <form th:action="@{/skill/update}" method="post" th:id="'update-form-' + ${data.id}">
+                                        <input type="hidden" name="id" th:value="${data.id}">
+                                        <input type="hidden" name="selectedMonth" th:value="${selectedMonth}">
+                                        <button type="submit" class="btn-save-time">学習時間を保存する</button>
+                                    </form>
                                 </td>
                                 <td class="col-action-delete">
                                     <button type="button" class="btn-delete-skill">削除する</button>
@@ -70,6 +74,15 @@
                 </div>
 
             </section>
+        </div>
+    </div>
+
+    <div class="modal-overlay" th:if="${isSuccess}">
+        <div class="modal-content">
+            <p class="modal-message">
+                <span th:text="${updatedItemName}"></span>の学習時間を保存しました！
+            </p>
+            <a th:href="@{/skill/edit(month=${selectedMonth})}" class="btn-modal-back">編集ページに戻る</a>
         </div>
     </div>
 
