@@ -89,5 +89,30 @@
     <footer class="footer">
         <p class="footer-text">portfolio site</p>
     </footer>
+
+    <script>
+        // 現在のスクロール位置をブラウザに記憶させる関数
+        function saveScrollPosition() {
+            sessionStorage.setItem("scrollPosition", window.scrollY);
+        }
+
+        // 保存ボタン（送信）を押した瞬間に記憶
+        document.addEventListener("submit", saveScrollPosition);
+
+        // モーダルの「編集ページに戻る」を押した瞬間に記憶
+        const closeBtn = document.querySelector('.btn-modal-back');
+        if (closeBtn) {
+            closeBtn.addEventListener("click", saveScrollPosition);
+        }
+
+        //画面が新しく読み込まれた時、記憶したスクロール位置があれば復元する
+        window.addEventListener("DOMContentLoaded", function() {
+            const scrollPos = sessionStorage.getItem("scrollPosition");
+            if (scrollPos !== null) {
+                window.scrollTo(0, parseInt(scrollPos, 10));
+                sessionStorage.removeItem("scrollPosition");
+            }
+        });
+    </script>
 </body>
 </html>
