@@ -68,8 +68,8 @@ public class SkillController {
         if (principal != null) {
             User user = userRepository.findByEmail(principal.getName()).orElse(null);
             if (user != null) {
-                // ※LearningDataRepositoryに findByUserIdAndStudyMonth() が定義されている前提です
-                List<LearningData> learningDataList = learningDataRepository.findByUserIdAndStudyMonth(user.getId(), targetStudyMonth);
+                // repositoryのメソッドを呼び出して、ユーザーIDと選択された月に紐づく学習データを取得
+                List<LearningData> learningDataList = learningDataRepository.findByUserIdAndStudyMonthOrderByIdAsc(user.getId(), targetStudyMonth);
                 model.addAttribute("learningDataList", learningDataList);
             }
         }
@@ -184,7 +184,7 @@ public class SkillController {
             @RequestParam("id") Integer id,
             @RequestParam("studyTime") Integer studyTime,
             @RequestParam("selectedMonth") Integer selectedMonth,
-            RedirectAttributes redirectAttributes) { //リダイレクト先にデータを渡すための引数
+            RedirectAttributes redirectAttributes) { 
         
         // 更新する項目の「名前」を取得しておく（モーダルに表示するため）
         LearningData data = learningDataRepository.findById(id).orElse(null);
