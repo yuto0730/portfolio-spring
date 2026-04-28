@@ -35,4 +35,9 @@ public class LearningDataService {
             learningDataRepository.save(learningData);
         }
     }
+
+    // 学習データを削除するメソッド
+    public void deleteLearningData(Integer id) {
+
+    }
 }
