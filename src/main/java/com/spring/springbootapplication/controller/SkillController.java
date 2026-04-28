@@ -82,7 +82,7 @@ public class SkillController {
         return "skill-edit";
     }
 
-    // 項目追加画面의 表示
+    // 項目追加画面の表示
     @GetMapping("/skill/new")
     public String showAddForm(
             @RequestParam("month") Integer month,
@@ -203,7 +203,10 @@ public class SkillController {
     //項目の削除処理
     @PostMapping("/skill/delete")
     public String deleteSkill(@RequestParam("id") Integer id) {
-        System.out.println("削除対象のID: " + id);
+        //Serviceの削除処理を呼び出して、データベースから該当の項目を消す
+        learningDataService.deleteLearningData(id);
+        
+        //削除が終わったら、一覧画面（編集ページ）に戻す
         return "redirect:/skill/edit";
     }
 }

@@ -89,6 +89,15 @@
         </div>
     </div>
 
+    <div class="modal-overlay" th:if="${isDeleteSuccess}">
+        <div class="modal-content">
+            <p class="modal-message">
+                <span th:text="${deletedItemName}"></span>を削除しました！
+            </p>
+            <a href="#" class="btn-modal-back">編集ページに戻る</a>
+        </div>
+    </div>
+
     <footer class="footer">
         <p class="footer-text">portfolio site</p>
     </footer>
