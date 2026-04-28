@@ -66,7 +66,10 @@
                                     </form>
                                 </td>
                                 <td class="col-action-delete">
-                                    <button type="button" class="btn-delete-skill">削除する</button>
+                                    <form th:action="@{/skill/delete}" method="post">
+                                        <input type="hidden" name="id" th:value="${data.id}">
+                                        <button type="submit" class="btn-delete-skill">削除する</button>
+                                    </form>
                                 </td>
                             </tr>
                         </tbody>
