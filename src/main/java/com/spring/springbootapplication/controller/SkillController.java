@@ -199,4 +199,9 @@ public class SkillController {
         
         return "redirect:/skill/edit?month=" + selectedMonth;
     }
+    // 項目削除の処理
+    @PostMapping("/skill/delete")
+    public String deleteSkill() {
+        return "redirect:/skill/edit";
+    }
 }

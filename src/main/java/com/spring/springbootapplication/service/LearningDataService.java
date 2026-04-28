@@ -38,6 +38,8 @@ public class LearningDataService {
 
     // 学習データを削除するメソッド
     public void deleteLearningData(Integer id) {
-
+        if (id != null) {
+            learningDataRepository.deleteById(id);
+        }
     }
 }
