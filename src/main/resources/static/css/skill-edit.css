@@ -178,9 +178,9 @@
 
 /* 削除ボタン */
 .btn-delete-skill {
-    width: 80px;
-    height: 40px;
-    background-color: #EF5350; 
+    width: 88px; /* WF指定 */
+    height: 32px; /* WF指定 */
+    background-color: #EE6969; /* WF指定 */
     color: #FFFFFF;
     border: none;
     border-radius: 4px;
