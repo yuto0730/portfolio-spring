@@ -68,6 +68,7 @@
                                 <td class="col-action-delete">
                                     <form th:action="@{/skill/delete}" method="post">
                                         <input type="hidden" name="id" th:value="${data.id}">
+                                        <input type="hidden" name="selectedMonth" th:value="${selectedMonth}">
                                         <button type="submit" class="btn-delete-skill">削除する</button>
                                     </form>
                                 </td>
@@ -94,7 +95,7 @@
             <p class="modal-message">
                 <span th:text="${deletedItemName}"></span>を削除しました！
             </p>
-            <a href="#" class="btn-modal-back">編集ページに戻る</a>
+            <a th:href="@{/skill/edit(month=${selectedMonth})}" class="btn-modal-back">編集ページに戻る</a>
         </div>
     </div>
 
