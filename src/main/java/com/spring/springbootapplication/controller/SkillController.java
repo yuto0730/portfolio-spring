@@ -202,11 +202,23 @@ public class SkillController {
 
     //項目の削除処理
     @PostMapping("/skill/delete")
-    public String deleteSkill(@RequestParam("id") Integer id) {
-        //Serviceの削除処理を呼び出して、データベースから該当の項目を消す
+    public String deleteSkill(
+            @RequestParam("id") Integer id,
+            @RequestParam("selectedMonth") Integer selectedMonth,
+            RedirectAttributes redirectAttributes) {
+        
+        // 削除する前に、項目の「名前」を取得しておく（モーダルに表示するため）
+        LearningData data = learningDataRepository.findById(id).orElse(null);
+        String itemName = (data != null) ? data.getName() : "";
+
+        // Serviceの削除処理を呼び出して、データベースから該当の項目を消す
         learningDataService.deleteLearningData(id);
         
-        //削除が終わったら、一覧画面（編集ページ）に戻す
-        return "redirect:/skill/edit";
+        // モーダル表示用のフラグと項目名を、リダイレクト先に渡す
+        redirectAttributes.addFlashAttribute("isDeleteSuccess", true);
+        redirectAttributes.addFlashAttribute("deletedItemName", itemName);
+        
+        // 削除が終わったら、今開いていた月の一覧画面に戻す
+        return "redirect:/skill/edit?month=" + selectedMonth;
     }
 }
