@@ -140,8 +140,19 @@
 
 .col-name { width: 240px; /* WF指定 */ }
 .col-time { width: 240px; /* WF指定 */ }
-.col-action-save { width: 200px; /* WF指定 */ }
-.col-action-delete { width: 200px; /* WF指定 */ }
+
+.skill-table td.col-time {
+    padding: 16px 64px 16px 16px; /* WF指定（上16px 右64px 下16px 左16px） */
+}
+
+.skill-table td.col-action-save { 
+    width: 200px; /* WF指定 */ 
+    padding: 20px 16px 20px 26px; /* WF指定（上20px 右16px 下20px 左26px） */
+}
+.skill-table td.col-action-delete { 
+    width: 200px; /* WF指定 */ 
+    padding: 20px 40px 20px 72px; /* WF指定（上20px 右40px 下20px 左72px） */
+}
 
 /* =========================================================
    【学習項目編集画面】保存後に追加されるテーブル内の要素
@@ -150,42 +161,65 @@
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: 400;
-    color: rgba(0, 0, 0, 0.87);
+    line-height: 143%; /* WF指定 */
+    letter-spacing: 0.15px; /* WF指定 */
+    color: rgba(0, 0, 0, 0.87); /* WF指定 */
 }
 
 .input-time {
-    width: 80px;
-    height: 32px;
-    padding: 4px 8px;
+    width: 160px; /* WF指定 */
+    height: 40px; /* WF指定 */
+    padding: 10.5px 12px; /* WF指定 */
     border: 1px solid rgba(0, 0, 0, 0.23); /* 枠線 */
     border-radius: 4px;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
+    font-weight: 400; /* WF指定 */
+    line-height: 19px; /* WF指定 */
+    letter-spacing: 0.15px; /* WF指定 */
+    color: rgba(0, 0, 0, 0.54); /* WF指定 */
     box-sizing: border-box;
+}
+
+.input-time::-webkit-inner-spin-button,
+.input-time::-webkit-outer-spin-button {
+    opacity: 1; /* 常に表示 */
+    width: 24px; /* WF指定 */
+    height: 34px; /* WF指定 */
+    margin-top: 3px; /* WF指定 */
+    margin-bottom: 3px; /* WF指定 */
 }
 
 /* 保存ボタン */
 .btn-save-time {
-    width: 160px;
-    height: 40px;
+    white-space: nowrap; /* テキストが絶対に折り返されないようにする */
+    height: 32px; /* WF指定 */
+    padding: 8px 16px; /* WF指定 */
+    box-sizing: border-box;
     background-color: #FFFFFF;
     color: #1B5678;
     border: 1px solid #1B5678;
     border-radius: 4px;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
+    font-weight: 400; /* WF指定 */
+    line-height: 100%; /* WF指定 */
 }
 
 /* 削除ボタン */
 .btn-delete-skill {
-    width: 88px; /* WF指定 */
+    white-space: nowrap; /* テキストが絶対に折り返されないようにする */
     height: 32px; /* WF指定 */
+    padding: 8px 16px; /* WF指定 */
+    box-sizing: border-box; 
     background-color: #EE6969; /* WF指定 */
     color: #FFFFFF;
     border: none;
     border-radius: 4px;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
+    font-weight: 400; /* WF指定 */
+    line-height: 100%; /* WF指定 */
 }
 
 /* =========================================================
