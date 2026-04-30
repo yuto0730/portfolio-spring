@@ -120,15 +120,22 @@
 }
 
 .skill-table th {
-    height: 57px; /* WF指定 */
+    height: 56px; /* WF指定 */
     font-family: 'Roboto', sans-serif; /* WF指定 */
     font-size: 14px; /* WF指定 */
     font-weight: 500; /* WF指定 */
+    line-height: 24px; /* WF指定 */
+    letter-spacing: 0.15px; /* WF指定 */
     color: rgba(0, 0, 0, 0.87); /* WF指定 */
     text-align: left;
-    padding-left: 40px; /* WF指定 */
+    padding-left: 40px; /* 一番左の「項目名」用の余白 */
     border-bottom: 1px solid rgba(0, 0, 0, 0.12); /* WF指定 */
     box-sizing: border-box;
+}
+
+.skill-table th:nth-child(2),
+.skill-table th.col-time {
+    padding-left: 16px; /* WF指定 */
 }
 
 .skill-table td {
