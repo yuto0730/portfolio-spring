@@ -8,6 +8,7 @@ import com.spring.springbootapplication.dto.SkillChartDto;
 import com.spring.springbootapplication.repository.LearningDataRepository;
 
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -47,6 +48,18 @@ public class LearningDataService {
 
     // スキルチャートのデータを取得するメソッド
     public List<SkillChartDto> getSkillChartData(Integer userId) {
+        if (userId == null) {
+            return null;
+        }
+
+        // 直近3ヶ月の期間を算出する
+        LocalDate now = LocalDate.now();
+        LocalDate startMonth = now.minusMonths(2).withDayOfMonth(1);
+        LocalDate endMonth = now.withDayOfMonth(now.lengthOfMonth());
+
+        // ユーザーIDと指定期間に紐づくデータを取得する
+        List<LearningData> learningDataList = learningDataRepository.findByUserIdAndStudyMonthBetween(userId, startMonth, endMonth);
+
         return null;
     }
 }
