@@ -101,6 +101,18 @@ public class UserController {
 
         // スキルチャートのデータを取得する
         List<SkillChartDto> chartData = learningDataService.getSkillChartData(user.getId());
+
+        // 【挙動確認用のログ出力】
+        System.out.println("====== [デバッグ] スキルチャートデータ ======");
+        if (chartData != null) {
+            for (SkillChartDto dto : chartData) {
+                System.out.println("カテゴリ: " + dto.getCategoryName() + " (ID: " + dto.getCategoryId() + ")");
+                System.out.println(" -> 学習時間(先々月, 先月, 今月): " + dto.getStudyTimes());
+            }
+        } else {
+            System.out.println("スキルチャートデータが取得できていません。");
+        }
+        System.out.println("===========================================");
         
         return "mypage";
     }
