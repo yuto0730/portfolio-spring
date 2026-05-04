@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.springbootapplication.entity.LearningData;
+import com.spring.springbootapplication.dto.SkillChartDto;
 import com.spring.springbootapplication.repository.LearningDataRepository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class LearningDataService {
@@ -41,5 +43,10 @@ public class LearningDataService {
         if (id != null) {
             learningDataRepository.deleteById(id);
         }
+    }
+
+    // スキルチャートのデータを取得するメソッド
+    public List<SkillChartDto> getSkillChartData(Integer userId) {
+        return null;
     }
 }
