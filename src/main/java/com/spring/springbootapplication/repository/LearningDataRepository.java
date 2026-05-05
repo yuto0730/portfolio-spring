@@ -21,4 +21,7 @@ public interface LearningDataRepository extends JpaRepository<LearningData, Inte
 
     // ユーザーIDと学習月でデータを一覧取得するメソッド
     List<LearningData> findByUserIdAndStudyMonthOrderByIdAsc(Integer userId, LocalDate studyMonth);
+
+    // ユーザーIDと指定期間（開始月〜終了月）に紐づくデータを取得するメソッド
+    List<LearningData> findByUserIdAndStudyMonthBetween(Integer userId, LocalDate startMonth, LocalDate endMonth);
 }

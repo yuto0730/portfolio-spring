@@ -6,11 +6,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/common.css}">
     <link rel="stylesheet" th:href="@{/css/mypage.css}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header class="header">
         <div class="header-container">
-            <div class="header-logo">My Portfolio</div>
+            <a th:href="@{/mypage}" style="text-decoration: none; color: inherit;">
+                <div class="header-logo">My Portfolio</div>
+            </a>
             <form th:action="@{/logout}" method="post">
                 <button type="submit" class="logout-header-btn">ログアウト</button>
             </form>
@@ -43,6 +46,9 @@
             <a th:href="@{/skill/edit}" class="chart-edit-btn">
                 編集する
             </a>
+            <div class="chart-container">
+                <canvas id="skillChart"></canvas>
+            </div>
         </div>
     </main>
 
@@ -52,5 +58,128 @@
             <span class="login-name" th:text="${user.name}"></span>
         </p>
     </footer>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        //Spring Boot（Java側）から渡されたデータを受け取る
+        const rawChartData = /*[[${chartData}]]*/ [];
+        
+        // データが空（null）だった場合に、JSのエラーで画面が真っ白になるのを防ぐ安全策（空の配列として扱う）
+        const chartData = rawChartData || [];
+        
+        // グラフを描画するキャンバスの2Dコンテキストを取得
+        const ctx = document.getElementById('skillChart').getContext('2d');
+
+        // WFのデザイン通りに、各カテゴリに対応するバーの色を定義
+        const categoryColors = {
+            'バックエンド': '#F2B1C6', // ピンク
+            'フロントエンド': '#F3C69D', // オレンジ
+            'インフラ': '#F7E5A9'       // 黄色
+        };
+
+        // Javaから来たデータを, Chart.jsが読み込める「データセット」の形式に変換（マッピング）する
+        const datasets = chartData.map(data => {
+            // Figmaの指定通りに、カテゴリごとにバーの太さ（px）を変えるための分岐
+            let barWidth = 60; // 基本の太さ
+            
+            if (data.categoryName === 'フロントエンド') {
+                barWidth = 67; // WF参照
+            } else if (data.categoryName === 'バックエンド') {
+                barWidth = 60; // WF参照
+            } else if (data.categoryName === 'インフラ') {
+                barWidth = 63; // WF参照
+            }
+
+            return {
+                label: data.categoryName, // グラフ上のラベルの名前
+                data: data.studyTimes,    // 先々月・先月・今月の学習時間の配列
+                backgroundColor: categoryColors[data.categoryName] || '#CCCCCC', // 定義した色を適用
+                borderWidth: 0,           // バーの枠線を消してスッキリさせる
+
+                // 【バー同士の隙間19px】
+                // categoryPercentage（グループ全体の幅）を狭める
+                // barPercentage（バー自体の幅）を狭めることで、
+                // バー同士に余白を作る
+                categoryPercentage: 0.55,
+                barPercentage: 0.75,
+
+                // 値が null の場合は描画しない
+                skipNull: true
+            };
+        });
+
+        // 実際にグラフを描画する処理
+        new Chart(ctx, {
+            type: 'bar', // Bar Chart を指定
+            data: {
+                labels: ['先々月', '先月', '今月'], // X軸の下に表示されるテキスト
+                datasets: datasets // 作ったデータセットをセットする
+            },
+            options: {
+                responsive: true, // 画面サイズに合わせて伸縮させる設定
+                maintainAspectRatio: false, // 親要素.chart-containerのCSSの高さを優先させる
+                // WFのデザインに合わせてタイトル軸のスタイル再現
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Chart.js Bar Chart',
+                        color: 'rgba(0, 0, 0, 0.9)',
+                        font: {
+                            family: "'Roboto', sans-serif",
+                            size: 14,
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        position: 'top', // 凡例をグラフの上部に配置
+                        labels: {
+                            boxWidth: 24,  // 凡例の四角いカラーボックスの横幅
+                            boxHeight: 12, // 凡例の四角いカラーボックスの高さ
+                            padding: 20,   // 凡例とグラフ本体との隙間
+                            color: '#000000', // WF指定 (文字色黒)
+                            font: {
+                                family: "'Roboto', sans-serif", 
+                                size: 14 
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: true,       // 月ごとの仕切り線を表示する
+                            drawOnChartArea: true,
+                            color: '#E5E5E5',    // 仕切り線の色（薄いグレー）
+                            offset: true         // 線がラベルの間（月の境目）に来るようにする設定
+                        },
+                        ticks: {
+                            color: '#000000', //WF指定 (文字色黒)
+                            font: {
+                                family: "'Roboto', sans-serif",
+                                size: 14,
+                                weight: 'bold' 
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: true, // 必ず「0」からスタートさせる
+                        suggestedMax: 100, // 100までは表示し、超えたら可変
+                        ticks: {
+                            stepSize: 10, // Y軸の目盛りを「10」刻みに固定
+                            color: '#000000', //WF指定 (文字色黒)
+                            font: {
+                                family: "'Roboto', sans-serif",
+                                size: 14
+                            }
+                        },
+                        grid: {
+                            color: '#E5E5E5' // 横のグリッド線もWFに合わせて薄くする
+                        }
+                    }
+                }
+            }
+        });
+        /*]]>*/
+    </script>
 </body>
 </html>

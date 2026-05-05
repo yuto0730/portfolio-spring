@@ -9,19 +9,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.springbootapplication.entity.User;
+import com.spring.springbootapplication.dto.SkillChartDto;
 import com.spring.springbootapplication.form.ProfileEditForm;
 import com.spring.springbootapplication.service.UserService;
+import com.spring.springbootapplication.service.LearningDataService;
 
 import jakarta.validation.Valid;
 import java.security.Principal;
 import java.io.IOException;
 import java.util.Base64; 
+import java.util.List;
 
 @Controller
 public class UserController {
 
     @Autowired
     private UserService userService; 
+
+    @Autowired
+    private LearningDataService learningDataService;
 
     // 【GET】登録画面を表示する
     @GetMapping("/signup")
@@ -92,6 +98,24 @@ public class UserController {
             String base64Image = Base64.getEncoder().encodeToString(user.getProfileImage());
             model.addAttribute("userImage", "data:image/png;base64," + base64Image);
         }
+
+        // スキルチャートのデータを取得する
+        List<SkillChartDto> chartData = learningDataService.getSkillChartData(user.getId());
+        
+        // 取得したデータをHTML（画面）に渡す 
+        model.addAttribute("chartData", chartData);
+
+        // 【挙動確認用のログ出力】
+        System.out.println("====== [デバッグ] スキルチャートデータ ======");
+        if (chartData != null) {
+            for (SkillChartDto dto : chartData) {
+                System.out.println("カテゴリ: " + dto.getCategoryName() + " (ID: " + dto.getCategoryId() + ")");
+                System.out.println(" -> 学習時間(先々月, 先月, 今月): " + dto.getStudyTimes());
+            }
+        } else {
+            System.out.println("スキルチャートデータが取得できていません。");
+        }
+        System.out.println("===========================================");
         
         return "mypage";
     }
