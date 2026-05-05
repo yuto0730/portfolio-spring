@@ -186,12 +186,17 @@ public class SkillController {
             @RequestParam("selectedMonth") Integer selectedMonth,
             RedirectAttributes redirectAttributes) { 
         
-        // 更新する項目の「名前」を取得しておく（モーダルに表示するため）
-        LearningData data = learningDataRepository.findById(id).orElse(null);
-        String itemName = (data != null) ? data.getName() : "";
+        String itemName = "";
+        
+        // nullチェックを追加
+        if (id != null) {
+            // 更新する項目の「名前」を取得しておく（モーダルに表示するため）
+            LearningData data = learningDataRepository.findById(id).orElse(null);
+            itemName = (data != null) ? data.getName() : "";
 
-        // サービスを呼び出して学習時間を更新する
-        learningDataService.updateStudyTime(id, studyTime);
+            // サービスを呼び出して学習時間を更新する
+            learningDataService.updateStudyTime(id, studyTime);
+        }
         
         // モーダル表示用のフラグと項目名を、リダイレクト先に渡す
         redirectAttributes.addFlashAttribute("isSuccess", true);
@@ -207,12 +212,17 @@ public class SkillController {
             @RequestParam("selectedMonth") Integer selectedMonth,
             RedirectAttributes redirectAttributes) {
         
-        // 削除する前に、項目の「名前」を取得しておく（モーダルに表示するため）
-        LearningData data = learningDataRepository.findById(id).orElse(null);
-        String itemName = (data != null) ? data.getName() : "";
+        String itemName = "";
+        
+        // nullチェックを追加
+        if (id != null) {
+            // 削除する前に、項目の「名前」を取得しておく（モーダルに表示するため）
+            LearningData data = learningDataRepository.findById(id).orElse(null);
+            itemName = (data != null) ? data.getName() : "";
 
-        // Serviceの削除処理を呼び出して、データベースから該当の項目を消す
-        learningDataService.deleteLearningData(id);
+            // Serviceの削除処理を呼び出して、データベースから該当の項目を消す
+            learningDataService.deleteLearningData(id);
+        }
         
         // モーダル表示用のフラグと項目名を、リダイレクト先に渡す
         redirectAttributes.addFlashAttribute("isDeleteSuccess", true);
