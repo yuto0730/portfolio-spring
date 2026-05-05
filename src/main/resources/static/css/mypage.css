@@ -139,6 +139,12 @@
 .chart-container {
     position: relative;
     width: 1081px; /*指定*/
-    height: 532.5px; /*指定*/
-    margin: 46px auto 81.5px auto; /*指定*/
+    height: 532.5px;/*指定*/
+    margin: 46px auto 81.5px auto; /*指定: 上のボタンとの間隔46px、下のフッターとの間隔81.5px*/
+    padding-right: 5px;/*右側の見切れ対策（グラフの右端が見切れるのを防ぐため）*/
+    box-sizing: border-box;/* paddingをwidth内に含める */
+}
+
+.chart-container canvas {
+    display: block;
 }
