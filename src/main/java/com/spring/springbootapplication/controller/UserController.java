@@ -101,6 +101,9 @@ public class UserController {
 
         // スキルチャートのデータを取得する
         List<SkillChartDto> chartData = learningDataService.getSkillChartData(user.getId());
+        
+        // 取得したデータをHTML（画面）に渡す 
+        model.addAttribute("chartData", chartData);
 
         // 【挙動確認用のログ出力】
         System.out.println("====== [デバッグ] スキルチャートデータ ======");
