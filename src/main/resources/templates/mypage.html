@@ -56,5 +56,13 @@
             <span class="login-name" th:text="${user.name}"></span>
         </p>
     </footer>
+
+    <script th:inline="javascript">
+        // Controllerから渡されたデータを変数に格納
+        const chartData = /*[[${chartData}]]*/ [];
+        
+        // 取得データの確認用
+        console.log(chartData);
+    </script>
 </body>
 </html>
