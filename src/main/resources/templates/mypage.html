@@ -11,7 +11,9 @@
 <body>
     <header class="header">
         <div class="header-container">
-            <div class="header-logo">My Portfolio</div>
+            <a th:href="@{/mypage}" style="text-decoration: none; color: inherit;">
+                <div class="header-logo">My Portfolio</div>
+            </a>
             <form th:action="@{/logout}" method="post">
                 <button type="submit" class="logout-header-btn">ログアウト</button>
             </form>
@@ -58,7 +60,6 @@
     </footer>
 
     <script th:inline="javascript">
-        // Controllerから渡されたデータを取得（nullの場合は空配列として扱う）
         const rawChartData = /*[[${chartData}]]*/ [];
         const chartData = rawChartData || [];
         
@@ -88,7 +89,6 @@
                 maintainAspectRatio: false
             }
         });
-        
     </script>
 </body>
 </html>

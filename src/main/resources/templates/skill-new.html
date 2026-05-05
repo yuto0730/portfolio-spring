@@ -10,7 +10,9 @@
 <body>
     <header class="header">
         <div class="header-container">
-            <h1 class="header-logo">My Portfolio</h1>
+            <a th:href="@{/mypage}" style="text-decoration: none; color: inherit;">
+                <h1 class="header-logo">My Portfolio</h1>
+            </a>
             <form th:action="@{/logout}" method="post" style="display: inline;">
                 <button type="submit" class="logout-header-btn">ログアウト</button>
             </form>
