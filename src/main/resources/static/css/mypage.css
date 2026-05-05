@@ -5,7 +5,7 @@
 ========================================================= */
 .main-wrapper {
     width: 960px;       /*指定*/
-    margin: 120px auto; /*指定*/
+    margin: 120px auto 0 auto; /*指定: 下部の余白はchart-containerで取るため0に調整*/
 }
 
 .profile-section {
@@ -138,7 +138,7 @@
 ========================================================= */
 .chart-container {
     position: relative;
-    width: 1081px;
-    height: 532px;
-    margin: 15px auto 0; /* 上に15pxの余白、左右は中央揃え */
+    width: 1081px; /*指定*/
+    height: 532.5px; /*指定*/
+    margin: 46px auto 81.5px auto; /*指定*/
 }
