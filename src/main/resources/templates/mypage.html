@@ -58,14 +58,17 @@
     </footer>
 
     <script th:inline="javascript">
+        /*<![CDATA[*/
         const chartData = /*[[${chartData}]]*/ [];
         const ctx = document.getElementById('skillChart').getContext('2d');
+
         // カテゴリーごとの配色設定
         const categoryColors = {
             'バックエンド': '#F2B1C6',
             'フロントエンド': '#F3C69D',
             'インフラ': '#F7E5A9'
         };
+
         // Chart.js用のデータセット作成
         const datasets = chartData.map(data => ({
             label: data.categoryName,
@@ -73,6 +76,7 @@
             backgroundColor: categoryColors[data.categoryName] || '#CCCCCC',
             borderWidth: 0
         }));
+
         // グラフの初期化
         new Chart(ctx, {
             type: 'bar',
@@ -85,6 +89,7 @@
                 maintainAspectRatio: false
             }
         });
+        /*]]>*/
     </script>
 </body>
 </html>
