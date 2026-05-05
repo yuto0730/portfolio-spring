@@ -66,7 +66,6 @@
     font-size: 20px;
     line-height: 1.5;
     margin-bottom: 40px;
-    
     overflow-wrap: break-word; /* 枠を超えたら改行する */
     word-break: break-all;     /* 連続文字も端で切る */
 }
@@ -99,8 +98,9 @@
    【マイページ】下部：学習チャートエリア
 ========================================================= */
 .chart-section {
-    margin-top: 80px; /* // 指定: 上のプロフィールエリアとの間隔 */
-    text-align: center; /* 中身をすべて中央寄せ */
+    width: 1081px; /* 指定*/
+    margin: 80px auto 0 auto; /*指定: 上の自己紹介エリアとの間隔80px、下のフッターとの間隔はchart-containerで取るため0に調整*/
+    text-align: center;
 }
 
 /* タイトル(学習チャート)と下線 */
@@ -121,7 +121,6 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
-
     width: 152px;                      /*指定*/
     height: 53px;                      /*指定*/
     background-color: #1B5678;         /*指定*/

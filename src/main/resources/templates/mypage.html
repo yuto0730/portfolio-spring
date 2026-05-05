@@ -118,7 +118,18 @@
             options: {
                 responsive: true, // 画面サイズに合わせて伸縮させる設定
                 maintainAspectRatio: false, // 親要素.chart-containerのCSSの高さを優先させる
+                // WFのデザインに合わせてタイトル軸のスタイル再現
                 plugins: {
+                    title: {
+                        display: true,
+                        text: 'Chart.js Bar Chart',
+                        color: 'rgba(0, 0, 0, 0.9)',
+                        font: {
+                            family: "'Roboto', sans-serif",
+                            size: 14,
+                            weight: 'bold'
+                        }
+                    },
                     legend: {
                         position: 'top', // 凡例をグラフの上部に配置
                         labels: {
