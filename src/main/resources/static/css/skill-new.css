@@ -9,8 +9,9 @@
     align-items: center;
     background-color: #ffffff;         /* WF指定 */
     width: 100%;
-    min-width: 1440px;                 /* WF指定 */
+    max-width: 1440px;                 /* WF指定 */
     box-sizing: border-box;
+    margin: 0 auto;
     margin-bottom: 388px;              /* WF指定 */
 }
 
@@ -21,10 +22,10 @@
     font-family: 'Roboto', sans-serif; /* WF指定 */
     font-size: 36px;                   /* WF指定 */
     font-weight: 400;                  /* WF指定 */
-    line-height: 1.33;                 /* WF指定 (133%) */
+    line-height: 1.33;                 /* WF指定 */
     color: #333333;
-    margin-top: 80px;                  /* WF指定 (ヘッダーとの間隔) */
-    margin-bottom: 48px;               /* WF指定 (フォームとの間隔) */
+    margin-top: 80px;                  /* WF指定 */
+    margin-bottom: 48px;               /* WF指定 */
     text-align: center;
 }
 
@@ -85,30 +86,7 @@
     margin-top: 72px;                  /* WF指定 */
     padding: 16px 80px;                /* WF指定 */
     box-sizing: border-box;
-}
-
-/* =========================================================
-   【共通】フッター
-========================================================= */
-.footer {
-    width: 100%;
-    min-width: 1440px;                 /* WF指定 */
-    height: 40px;                      /* WF指定 */
-    background-color: #1B5678;         /* WF指定 */
-    display: flex;
-    align-items: center;
-    padding: 0 40px;                   /* WF指定 */
-    box-sizing: border-box;            /* WF指定 */
-}
-
-.footer-text {
-    color: #ffffff;
-    font-size: 14px;
-    margin: 0;
-}
-
-body {
-    margin: 0;
+    cursor: pointer;
 }
 
 /* =========================================================
@@ -168,4 +146,5 @@ body {
     font-weight: 400;                     /* WF指定 */
     font-size: 14px;                      /* WF指定 */
     color: #FFFFFF;                       /* WF指定 */
+    cursor: pointer;
 }
