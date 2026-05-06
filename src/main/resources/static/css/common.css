@@ -3,6 +3,12 @@
 /* =========================================================
    【全体共通】ベース設定
 ========================================================= */
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Roboto', sans-serif; /*指定*/
     margin: 0;
@@ -20,20 +26,20 @@ body {
 ========================================================= */
 .header {
     width: 100%;
-    min-width: 1440px;         /*指定*/
     height: 120px;             /*指定*/
     background-color: #1B5678; /*指定*/
 }
 
 .header-container {
+    width: 100%;
+    max-width: 1440px;         /*指定*/
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100%;
     padding: 0 40px;           /*指定*/
     box-sizing: border-box;
-    max-width: 1440px;
-    margin: 0 auto;
 }
 
 .header-logo {
@@ -53,8 +59,8 @@ body {
     width: 152px;                      /*指定*/
     height: 53px;                      /*指定*/
     padding: 16px 40px;                /*指定*/
-    background-color: #ffffff;       /*指定*/
-    color: #1B5678;                  /*指定*/
+    background-color: #ffffff;         /*指定*/
+    color: #1B5678;                    /*指定*/
     border-radius: 4px;                /*指定*/
     font-family: 'Roboto', sans-serif; /*指定*/
     font-size: 16px;                   /*指定*/
@@ -64,6 +70,7 @@ body {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+    text-decoration: none;
 }
 
 /* ログアウトボタン（マイページ用） */
@@ -82,22 +89,37 @@ body {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+      cursor: pointer;
 }
 
-/*仮メインコンテンツは余ったスペースをすべて埋める*/
+/* =========================================================
+   【共通部分】メインコンテンツ
+========================================================= */
 main {
     flex: 1;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* =========================================================
    【共通部分】フッター
 ========================================================= */
 .footer {
-    background-color: #1B5678; /*指定*/
-    height: 40px;              /*指定*/
-    text-align: center;
     width: 100%;
-    min-width: 1440px;
+    height: 40px;              /*指定*/
+    background-color: #1B5678; /*指定*/
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-container {
+    width: 100%;
+    max-width: 1440px;         /*指定*/
+    margin: 0 auto;
+
     display: flex;
     justify-content: center;
     align-items: center;

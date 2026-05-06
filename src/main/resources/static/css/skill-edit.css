@@ -1,9 +1,10 @@
+@charset "UTF-8";
+
 /* =========================================================
    【学習項目編集画面】全体レイアウト
 ========================================================= */
 .main-wrapper {
     width: 100%;
-    min-width: 960px; 
     padding-top: 120px; /* WF指定 */
     padding-bottom: 40px; /* WF指定 */
     background-color: #FFFFFF; /* WF指定 */
@@ -14,9 +15,8 @@
    【学習項目編集画面】月選択プルダウン
 ========================================================= */
 .pull-down-container {
-    width: 960px; /* 軸を960pxに固定 */
-    margin: 0 auto 40px; /* 中央寄せ & 下マージン */
-    padding-left: 40px; /* WFの margin-left: 40px 分 */
+    width: 960px; /* WF指定 */
+    margin: 0 auto 40px auto;
     box-sizing: border-box;
 }
 
@@ -31,6 +31,7 @@
     border: 1px solid #DDDDDD; /* WF指定 */
     border-radius: 4px; /* WF指定 */
     background-color: #FFFFFF;
+    cursor: pointer;
 }
 
 /* =========================================================
@@ -41,47 +42,50 @@
 }
 
 .category {
-    width: 960px; /* 軸を960pxに固定 */
+    width: 960px; /* WF指定 */
     height: 436px; /* WF指定 */
     padding: 40px; /* WF指定 */
     box-sizing: border-box;
-    margin: 0 auto 80px; /* 中央寄せ & 下マージン */
+    margin: 0 auto 80px auto;
     border: 1px solid rgba(0, 0, 0, 0.5); /* WF指定 */
     border-radius: 8px; /* WF指定 */
     background-color: #FFFFFF;
 }
 
 .title-container {
+    width: 880px; /* 960px - 左右padding40px */
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 32px; /* WF指定 */
+    margin-bottom: 36px; /* WF指定 */
 }
 
 .title-group {
+    width: 240px; /* WF指定 */
     display: flex;
     flex-direction: column;
+    gap: 16px; /* WF指定 */
 }
 
 .category-title {
     font-family: 'Roboto', sans-serif; /* WF指定 */
     font-size: 24px; /* WF指定 */
     font-weight: 700; /* WF指定 */
-    color: #000000; /* WF指定 */
+    color: rgba(0, 0, 0, 0.75); /* WF指定 */
     margin: 0;
     line-height: 100%; /* WF指定 */
 }
 
 .title-line {
     width: 240px; /* WF指定 */
-    height: 0px; 
-    border: 2px solid rgba(0, 0, 0, 0.5); /* WF指定 */
-    margin-top: 4px;
+    height: 0;
+    border-top: 2px solid rgba(0, 0, 0, 0.5); /* WF指定 */
 }
 
 .btn-add {
     width: 178px; /* WF指定 */
     height: 48px; /* WF指定 */
+    padding: 16px 40px; /* WF指定 */
     background-color: #1B5678; /* WF指定 */
     color: #FFFFFF; /* WF指定 */
     border-radius: 4px; /* WF指定 */
@@ -89,21 +93,25 @@
     font-size: 14px; /* WF指定 */
     font-weight: 400; /* WF指定 */
     border: none;
+    box-sizing: border-box;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
+    cursor: pointer;
 }
 
 /* =========================================================
    【学習項目編集画面】カード・テーブル（内部スクロール）
 ========================================================= */
 .card {
-    width: 880px; /* WF指定: 960px - 40px*2 */
-    height: 276px; /* WF指定: 57px + 73px*3 */
+    width: 880px; /* WF指定 */
+    height: 276px; /* WF指定 */
     background-color: #FFFFFF;
     border-radius: 4px; /* WF指定 */
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.12), 
-                0px 2px 2px 0px rgba(0, 0, 0, 0.14); /* WF指定 */
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.12),
+                0px 2px 2px 0px rgba(0, 0, 0, 0.14);
     overflow-y: auto;
 }
 
@@ -128,7 +136,7 @@
     letter-spacing: 0.15px; /* WF指定 */
     color: rgba(0, 0, 0, 0.87); /* WF指定 */
     text-align: left;
-    padding-left: 40px; /* 一番左の「項目名」用の余白 */
+    padding-left: 40px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12); /* WF指定 */
     box-sizing: border-box;
 }
@@ -145,20 +153,26 @@
     box-sizing: border-box;
 }
 
-.col-name { width: 240px; /* WF指定 */ }
-.col-time { width: 240px; /* WF指定 */ }
+.col-name {
+    width: 240px; /* WF指定 */
+}
+
+.col-time {
+    width: 240px; /* WF指定 */
+}
 
 .skill-table td.col-time {
-    padding: 16px 64px 16px 16px; /* WF指定（上16px 右64px 下16px 左16px） */
+    padding: 16px 64px 16px 16px; /* WF指定 */
 }
 
-.skill-table td.col-action-save { 
-    width: 200px; /* WF指定 */ 
-    padding: 20px 16px 20px 26px; /* WF指定（上20px 右16px 下20px 左26px） */
+.skill-table td.col-action-save {
+    width: 200px; /* WF指定 */
+    padding: 20px 16px 20px 26px; /* WF指定 */
 }
-.skill-table td.col-action-delete { 
-    width: 200px; /* WF指定 */ 
-    padding: 20px 40px 20px 72px; /* WF指定（上20px 右40px 下20px 左72px） */
+
+.skill-table td.col-action-delete {
+    width: 200px; /* WF指定 */
+    padding: 20px 40px 20px 72px; /* WF指定 */
 }
 
 /* =========================================================
@@ -177,7 +191,7 @@
     width: 160px; /* WF指定 */
     height: 40px; /* WF指定 */
     padding: 10.5px 12px; /* WF指定 */
-    border: 1px solid rgba(0, 0, 0, 0.23); /* 枠線 */
+    border: 1px solid rgba(0, 0, 0, 0.23);
     border-radius: 4px;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
@@ -190,7 +204,7 @@
 
 .input-time::-webkit-inner-spin-button,
 .input-time::-webkit-outer-spin-button {
-    opacity: 1; /* 常に表示 */
+    opacity: 1;
     width: 24px; /* WF指定 */
     height: 34px; /* WF指定 */
     margin-top: 3px; /* WF指定 */
@@ -199,7 +213,7 @@
 
 /* 保存ボタン */
 .btn-save-time {
-    white-space: nowrap; /* テキストが絶対に折り返されないようにする */
+    white-space: nowrap;
     height: 32px; /* WF指定 */
     padding: 8px 16px; /* WF指定 */
     box-sizing: border-box;
@@ -211,14 +225,15 @@
     font-size: 14px;
     font-weight: 400; /* WF指定 */
     line-height: 100%; /* WF指定 */
+    cursor: pointer;
 }
 
 /* 削除ボタン */
 .btn-delete-skill {
-    white-space: nowrap; /* テキストが絶対に折り返されないようにする */
+    white-space: nowrap;
     height: 32px; /* WF指定 */
     padding: 8px 16px; /* WF指定 */
-    box-sizing: border-box; 
+    box-sizing: border-box;
     background-color: #EE6969; /* WF指定 */
     color: #FFFFFF;
     border: none;
@@ -227,26 +242,25 @@
     font-size: 14px;
     font-weight: 400; /* WF指定 */
     line-height: 100%; /* WF指定 */
+    cursor: pointer;
 }
 
 /* =========================================================
    【学習項目編集画面】編集完了モーダル
 ========================================================= */
-/* 背景の暗幕 */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.75); /* WF指定: 黒色75% */
-    display: flex; 
-    justify-content: center; /* 左右中央揃え */
-    align-items: center; /* 上下中央揃え */
-    z-index: 100; /* 最前面に表示 */
+    background-color: rgba(0, 0, 0, 0.75); /* WF指定 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
 }
 
-/* モーダルの白い箱 */
 .modal-content {
     width: 640px; /* WF指定 */
     height: 240px; /* WF指定 */
@@ -258,16 +272,14 @@
     box-sizing: border-box;
 }
 
-/* メッセージテキスト */
 .modal-message {
     font-family: 'Roboto', sans-serif; /* WF指定 */
     font-size: 18px; /* WF指定 */
-    font-weight: 700; /* WF指定(Bold) */
+    font-weight: 700; /* WF指定 */
     color: #000000; /* WF指定 */
-    margin: 0 0 40px 0; /* WF指定: 下余白40px */
+    margin: 0 0 40px 0; /* WF指定 */
 }
 
-/* 編集ページに戻るボタン */
 .btn-modal-back {
     width: 192px; /* WF指定 */
     height: 48px; /* WF指定 */
@@ -275,11 +287,14 @@
     color: #FFFFFF; /* WF指定 */
     font-family: 'Roboto', sans-serif; /* WF指定 */
     font-size: 14px; /* WF指定 */
-    font-weight: 400; /* WF指定(Regular) */
+    font-weight: 400; /* WF指定 */
     border: none;
     border-radius: 4px; /* WF指定 */
-    text-decoration: none; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
 }

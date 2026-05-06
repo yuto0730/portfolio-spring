@@ -4,11 +4,17 @@
    【マイページ】メイン枠のレイアウト
 ========================================================= */
 .main-wrapper {
-    width: 960px;       /*指定*/
-    margin: 120px auto 0 auto; /*指定: 下部の余白はchart-containerで取るため0に調整*/
+    max-width: 1440px; /* 追加 */
+    width: 100%;
+    margin: 120px auto 0 auto; /*指定*/
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .profile-section {
+    width: 960px;       /*指定*/
     display: flex;
     gap: 80px;          /*指定*/
     align-items: flex-start;
@@ -28,14 +34,14 @@
     background-color: #D9D9D9;  /*指定*/
     border-radius: 50%;
     margin-bottom: 20px;
-    overflow: hidden;           /* はみ出た画像を隠す */
+    overflow: hidden;
 }
 
 /* 表示する画像のスタイル */
 .avatar-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;          /* アスペクト比を維持して枠を埋める */
+    object-fit: cover;
 }
 
 .profile-user-name {
@@ -56,18 +62,18 @@
     font-size: 36px;                   /*指定*/
     font-weight: bold;                 /*指定*/
     margin-bottom: 30px;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.5); /*指定 (WF: #000000 50%) */
+    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
     padding-bottom: 10px;
     width: 240px; /*指定*/
 }
 
 .intro-text-box {
-    width: 100%;             /* 520pxの幅いっぱいに広げる */
+    width: 100%;
     font-size: 20px;
     line-height: 1.5;
     margin-bottom: 40px;
-    overflow-wrap: break-word; /* 枠を超えたら改行する */
-    word-break: break-all;     /* 連続文字も端で切る */
+    overflow-wrap: break-word;
+    word-break: break-all;
 }
 
 .profile-edit-btn {
@@ -84,6 +90,8 @@
     border-radius: 4px;
     font-size: 20px;                   /*指定*/
     font-family: 'Roboto', sans-serif; /*指定*/
+
+    cursor: pointer;
 }
 
 /* =========================================================
@@ -98,8 +106,8 @@
    【マイページ】下部：学習チャートエリア
 ========================================================= */
 .chart-section {
-    width: 1081px; /* 指定*/
-    margin: 80px auto 0 auto; /*指定: 上の自己紹介エリアとの間隔80px、下のフッターとの間隔はchart-containerで取るため0に調整*/
+    width: 1081px; /*指定*/
+    margin: 80px auto 0 auto;
     text-align: center;
 }
 
@@ -107,12 +115,12 @@
 .chart-title {
     font-family: 'Roboto', sans-serif; /*指定*/
     font-size: 36px;                   /*指定*/
-    font-weight: bold;                  /*指定*/
-    color: rgba(0, 0, 0, 0.75);        /*指定: 黒の75%*/
-    margin: 0 auto 40px auto;          /*下のボタンとの隙間を40pxに指定*/
-    padding-bottom: 16px;              /*文字と下線の隙間を16pxに指定*/
-    width: 400px;                      /*指定: 下線の長さを400pxに固定*/
-    border-bottom: 2px solid rgba(0, 0, 0, 0.5); /*指定: 線は黒の50%*/
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.75);
+    margin: 0 auto 40px auto;
+    padding-bottom: 16px;
+    width: 400px;                      /*指定*/
+    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
 }
 
 /* チャートの「編集する」ボタン */
@@ -121,6 +129,7 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
+
     width: 152px;                      /*指定*/
     height: 53px;                      /*指定*/
     background-color: #1B5678;         /*指定*/
@@ -129,7 +138,9 @@
     border-radius: 4px;                /*指定*/
     font-family: 'Roboto', sans-serif; /*指定*/
     font-size: 18px;                   /*指定*/
-    font-weight: normal;                  /*指定: Regular*/
+    font-weight: normal;
+
+    cursor: pointer;
 }
 
 /* =========================================================
@@ -138,10 +149,10 @@
 .chart-container {
     position: relative;
     width: 1081px; /*指定*/
-    height: 532.5px;/*指定*/
-    margin: 46px auto 81.5px auto; /*指定: 上のボタンとの間隔46px、下のフッターとの間隔81.5px*/
-    padding-right: 5px;/*右側の見切れ対策（グラフの右端が見切れるのを防ぐため）*/
-    box-sizing: border-box;/* paddingをwidth内に含める */
+    height: 532.5px; /*指定*/
+    margin: 46px auto 81.5px auto;
+    padding-right: 5px;
+    box-sizing: border-box;
 }
 
 .chart-container canvas {
